@@ -56,6 +56,7 @@ extension ExploreListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExploreCell.reuseIdentifier, for: indexPath) as! ExploreCell
+        cell.setup(viewModel: ExploreCellViewModel())
         return cell
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class ExploreCell: UITableViewCell {
     static let reuseIdentifier = "ExploreCell"
@@ -32,12 +33,16 @@ class ExploreCell: UITableViewCell {
         return view
     }()
     
-    lazy var lottieView: UIView = {
-        let view = UIView()
+    lazy var lottieView: AnimationView = {
+        let view = AnimationView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
+        view.loopMode = .loop
+        view.backgroundBehavior = .pauseAndRestore
+        view.contentMode = .scaleAspectFit
         return view
     }()
+
+    private var viewModel: ExploreCellViewModel?
 
     // MARK: - Inits
 
@@ -48,6 +53,16 @@ class ExploreCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(viewModel: ExploreCellViewModel) {
+        self.viewModel = viewModel
+        guard let url = viewModel.url else { return }
+        Animation.loadedFrom(url: url, closure: { [weak self] animation in
+            guard let self = self else { return }
+            self.lottieView.animation = animation
+            self.lottieView.play()
+        }, animationCache: LRUAnimationCache.sharedCache)
     }
 }
 
