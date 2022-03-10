@@ -16,6 +16,7 @@ enum Section: Hashable {
     case login
     case featured
     case people
+    case blog
 }
 
 typealias HomeLayoutSectionTuple = (section: Section, item: [HomeItem])
@@ -30,6 +31,8 @@ struct HomeItem: Hashable, Equatable {
 
 class HomeViewController: UIViewController {
     
+    // MARK: - Outlets
+
     private lazy var refreshControl: UIRefreshControl = {
         let view = UIRefreshControl()
         view.tintColor = .red
@@ -47,6 +50,8 @@ class HomeViewController: UIViewController {
         view.register(HomeLoginCell.self, forCellWithReuseIdentifier: HomeLoginCell.reuseIdentifier)
         view.register(HomeFeaturedCell.self, forCellWithReuseIdentifier: HomeFeaturedCell.reuseIdentifier)
         view.register(HomePeopleCell.self, forCellWithReuseIdentifier: HomePeopleCell.reuseIdentifier)
+        view.register(HomeBlogCell.self, forCellWithReuseIdentifier: HomeBlogCell.reuseIdentifier)
+        view.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeader.reuseIdentifier)
         view.addSubview(refreshControl)
         return view
     }()
@@ -54,6 +59,7 @@ class HomeViewController: UIViewController {
     let store: [HomeLayoutSectionTuple] = [
         (.login, [HomeItem()]),
         (.featured, [HomeItem(), HomeItem()]),
+        (.blog, [HomeItem(), HomeItem(), HomeItem()]),
         (.people, [HomeItem(), HomeItem(), HomeItem(), HomeItem(), HomeItem(), HomeItem()])
     ]
     
@@ -61,6 +67,8 @@ class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
     
+    // MARK: - Inits
+
     init(viewModel: HomeViewModel = HomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -69,6 +77,8 @@ class HomeViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,7 +108,6 @@ extension HomeViewController {
                 return nil
             }
 
-            
             switch sectionIdentifier {
             case .login:
                 return self.configure(HomeLoginCell.self, with: item, for: indexPath)
@@ -106,7 +115,18 @@ extension HomeViewController {
                 return self.configure(HomeFeaturedCell.self, with: item, for: indexPath)
             case .people:
                 return self.configure(HomePeopleCell.self, with: item, for: indexPath)
+            case .blog:
+                return self.configure(HomeBlogCell.self, with: item, for: indexPath)
             }
+        }
+        
+        dataSource?.supplementaryViewProvider = { [weak self] collectionView, kind, indexPath in
+            guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HomeSectionHeader.reuseIdentifier, for: indexPath) as? HomeSectionHeader else { return nil }
+            
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else { return nil }
+            guard let section = self?.dataSource?.snapshot().sectionIdentifier(containingItem: item) else { return nil }
+            sectionHeader.titleLabel.text = "Test"
+            return sectionHeader
         }
     }
     
@@ -156,6 +176,8 @@ extension HomeViewController {
                 return self.makeFeaturedSection()
             case .people:
                 return self.makePeopleSection()
+            case .blog:
+                return self.makeBlogSection(layoutEnvironment: layoutEnvironment)
             }
         }
         
@@ -184,15 +206,17 @@ extension HomeViewController {
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(400))
         let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5)
+        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5)
         let layoutGroupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
+            widthDimension: .fractionalWidth(0.9),
             heightDimension: .estimated(1))
         let layoutGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: layoutGroupSize, subitems: [layoutItem])
         
         let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
+        let layoutSectionHeader = makeHeaderSection()
+        section.boundarySupplementaryItems = [layoutSectionHeader]
         return section
     }
     
@@ -213,7 +237,27 @@ extension HomeViewController {
 
         let section = NSCollectionLayoutSection(group: layoutGroup)
         section.orthogonalScrollingBehavior = .groupPagingCentered
-
+        let layoutSectionHeader = makeHeaderSection()
+        section.boundarySupplementaryItems = [layoutSectionHeader]
         return section
+    }
+    
+    private func makeBlogSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
+        listConfiguration.showsSeparators = true
+        let list = NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: layoutEnvironment)
+        return list
+    }
+    
+    private func makeHeaderSection() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let layoutSectionHeaderSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.93),
+            heightDimension: .estimated(80)
+        )
+        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: layoutSectionHeaderSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
+        return layoutSectionHeader
     }
 }

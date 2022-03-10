@@ -13,7 +13,7 @@ class HomeFeaturedCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .blue
         view.layer.cornerCurve = .continuous
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = 15
         view.clipsToBounds = true
         return view
     }()
