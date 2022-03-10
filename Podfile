@@ -6,8 +6,7 @@ target 'LottieFiles' do
   use_frameworks!
 
   pod 'LZViewPager', '~> 1.2.5'
-  pod 'lottie-ios', '~> 3.3.0'
-
+  pod 'lottie-ios', :git => 'https://github.com/airbnb/lottie-ios.git', :branch => 'master'
 
   target 'LottieFilesTests' do
     inherit! :search_paths
