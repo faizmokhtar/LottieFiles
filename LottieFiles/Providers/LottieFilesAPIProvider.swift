@@ -8,15 +8,7 @@
 import Foundation
 import Combine
 
-struct FeaturedAnimationsResponse: Decodable {}
-
-struct PopularAnimationsResponse: Decodable {}
-
-struct RecentAnimationsResponse: Decodable {}
-
 struct AnimatorsResponse: Decodable {}
-
-struct BlogsResponse: Decodable {}
 
 protocol LottieFilesAPIProtocol {
     func fetchFeaturedAnimations() -> AnyPublisher<FeaturedAnimationsResponse, Error>
@@ -25,13 +17,13 @@ protocol LottieFilesAPIProtocol {
     
     func fetchRecentAnimations() -> AnyPublisher<RecentAnimationsResponse,  Error>
     
-    func fetchAnimators() -> AnyPublisher<AnimatorsResponse, Error>
+    func fetchAnimators() -> AnyPublisher<FeaturedAnimatorsResponse, Error>
     
     func fetchBlogs()-> AnyPublisher<BlogsResponse, Error>
 }
 
 class LottieFilesAPIProvider: LottieFilesAPIProtocol {
-    func fetchAnimators() -> AnyPublisher<AnimatorsResponse, Error> {
+    func fetchAnimators() -> AnyPublisher<FeaturedAnimatorsResponse, Error> {
         return Empty().eraseToAnyPublisher()
     }
     
