@@ -6,5 +6,29 @@
 //
 
 import Foundation
+import Combine
+class ExploreViewModel {
+    
+    let apiProvider: LottieFilesAPIProvider
+    
+    var cancellables = Set<AnyCancellable>()
 
-class ExploreViewModel {}
+    init(
+        apiProvider: LottieFilesAPIProvider = LottieFilesAPIProvider()
+    ) {
+        self.apiProvider = apiProvider
+        setupBindings()
+    }
+}
+
+extension ExploreViewModel {
+    private func setupBindings() {
+        apiProvider.fetchRecentAnimations()
+            .sink(receiveCompletion: { error in
+                print(error)
+            }, receiveValue: { animations in
+                print(animations)
+            })
+            .store(in: &cancellables)
+    }
+}
