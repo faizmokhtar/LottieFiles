@@ -25,6 +25,8 @@ class ExploreViewController: UIViewController {
     
     private let viewModel: ExploreViewModel
     
+    // MARK: - Inits
+
     init(viewModel: ExploreViewModel = ExploreViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -33,6 +35,8 @@ class ExploreViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,8 @@ class ExploreViewController: UIViewController {
         viewPager.reload()
     }
 }
+
+// MARK: - Private Methods
 
 extension ExploreViewController {
     private func setupUI() {
@@ -59,6 +65,8 @@ extension ExploreViewController {
 
 extension ExploreViewController: LZViewPagerDelegate {}
 
+// MARK: - LZViewPager Data Source
+
 extension ExploreViewController: LZViewPagerDataSource {
     func numberOfItems() -> Int {
         return Pages.allCases.count
@@ -68,11 +76,14 @@ extension ExploreViewController: LZViewPagerDataSource {
         guard let page = Pages(rawValue: index) else { return UIViewController() }
         switch page {
         case .recent:
-            return ExploreListViewController()
+            let viewModel = ExploreListViewModel(type: .recent)
+            return ExploreListViewController(viewModel: viewModel)
         case .featured:
-            return ExploreListViewController()
+            let viewModel = ExploreListViewModel(type: .featured)
+            return ExploreListViewController(viewModel: viewModel)
         case .popular:
-            return ExploreListViewController()
+            let viewModel = ExploreListViewModel(type: .popular)
+            return ExploreListViewController(viewModel: viewModel)
         }
     }
     
@@ -90,7 +101,6 @@ extension ExploreViewController: LZViewPagerDataSource {
         case .popular:
             button.setTitle("Popular", for: .normal)
         }
-
         return button
     }
 }

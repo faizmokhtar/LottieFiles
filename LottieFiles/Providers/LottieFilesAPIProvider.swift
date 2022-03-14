@@ -25,7 +25,7 @@ protocol LottieFilesAPIProtocol {
 class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     
     let baseURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/lottiefiles-test.appspot.com/o/")!
-    let queryItems = [
+    var queryItems = [
         URLQueryItem(name: "alt", value: "media"),
         URLQueryItem(name: "token", value: "f5acfd96-384a-4552-a0b5-399675a03826")
     ]
@@ -56,6 +56,11 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     }
     
     func fetchPopularAnimations() -> AnyPublisher<PopularAnimationsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "alt", value: "media"),
+            URLQueryItem(name: "token", value: "a32b4948-d278-4923-880e-8fb57741c190")
+        ]
+
         guard let url = baseURL.appendingPathComponent("popularAnimations.json")
                 .appending(queryItems) else {
                     return Empty().eraseToAnyPublisher()
@@ -68,6 +73,11 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     }
     
     func fetchRecentAnimations() -> AnyPublisher<RecentAnimationsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "alt", value: "media"),
+            URLQueryItem(name: "token", value: "f5acfd96-384a-4552-a0b5-399675a03826")
+        ]
+
         guard let url = baseURL.appendingPathComponent("recentAnimations.json")
                 .appending(queryItems) else {
                     return Empty().eraseToAnyPublisher()
@@ -81,6 +91,11 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     }
     
     func fetchFeaturedAnimations() -> AnyPublisher<FeaturedAnimationsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "alt", value: "media"),
+            URLQueryItem(name: "token", value: "f6e406f5-befb-40ab-a9b0-bb0a773b09fd")
+        ]
+
         guard let url = baseURL.appendingPathComponent("featuredAnimations.json")
                 .appending(queryItems) else {
                     return Empty().eraseToAnyPublisher()

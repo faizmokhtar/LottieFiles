@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import SDWebImage
 
 class ExploreCell: UITableViewCell {
     static let reuseIdentifier = "ExploreCell"
@@ -30,6 +31,20 @@ class ExploreCell: UITableViewCell {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Animation name goes here"
+        view.font = .systemFont(ofSize: 14, weight: .medium)
+        view.numberOfLines = 0
+        view.textAlignment = .left
+        return view
+    }()
+    
+    lazy var usernameLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "Username goes here"
+        view.font = .systemFont(ofSize: 14, weight: .regular)
+        view.textColor = .secondaryLabel
+        view.numberOfLines = 0
+        view.textAlignment = .left
         return view
     }()
     
@@ -57,20 +72,23 @@ class ExploreCell: UITableViewCell {
     
     func setup(viewModel: ExploreCellViewModel) {
         self.viewModel = viewModel
-        guard let url = viewModel.url else { return }
-        Animation.loadedFrom(url: url, closure: { [weak self] animation in
-            guard let self = self else { return }
-            self.lottieView.animation = animation
-            self.lottieView.play()
-        }, animationCache: LRUAnimationCache.sharedCache)
+        self.nameLabel.text = viewModel.name
+        self.usernameLabel.text = viewModel.username
+        self.avatarImageView.sd_setImage(with: viewModel.avatarURL, placeholderImage: UIImage(named: ""))
+        self.lottieView.backgroundColor = viewModel.backgroundColor
+        loadLottie(url: viewModel.lottieURL)
     }
 }
 
+// MARK: - Private Methods
+
 extension ExploreCell {
     private func setupViews() {
+        selectionStyle = .none
         addSubview(topView)
         topView.addSubview(avatarImageView)
         topView.addSubview(nameLabel)
+        topView.addSubview(usernameLabel)
         addSubview(lottieView)
         
         NSLayoutConstraint.activate([
@@ -83,10 +101,15 @@ extension ExploreCell {
             avatarImageView.heightAnchor.constraint(equalToConstant: 40),
             avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
-            
+
+            nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),
             nameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -15),
-            nameLabel.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
+            
+            usernameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+            usernameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            usernameLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            usernameLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -5),
             
             lottieView.topAnchor.constraint(equalTo: topView.bottomAnchor),
             lottieView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -94,5 +117,14 @@ extension ExploreCell {
             lottieView.bottomAnchor.constraint(equalTo: bottomAnchor),
             lottieView.heightAnchor.constraint(equalTo: lottieView.widthAnchor),
         ])
+    }
+    
+    private func loadLottie(url: URL?) {
+        guard let url = url else { return }
+        Animation.loadedFrom(url: url, closure: { [weak self] animation in
+            guard let self = self else { return }
+            self.lottieView.animation = animation
+            self.lottieView.play()
+        }, animationCache: LRUAnimationCache.sharedCache)
     }
 }

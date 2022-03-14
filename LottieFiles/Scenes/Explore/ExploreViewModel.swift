@@ -7,28 +7,16 @@
 
 import Foundation
 import Combine
+
+enum ExploreType {
+    case recent
+    case featured
+    case popular
+}
+
 class ExploreViewModel {
-    
-    let apiProvider: LottieFilesAPIProvider
-    
-    var cancellables = Set<AnyCancellable>()
 
-    init(
-        apiProvider: LottieFilesAPIProvider = LottieFilesAPIProvider()
-    ) {
-        self.apiProvider = apiProvider
-        setupBindings()
-    }
+    init() {}
 }
 
-extension ExploreViewModel {
-    private func setupBindings() {
-        apiProvider.fetchRecentAnimations()
-            .sink(receiveCompletion: { error in
-                print(error)
-            }, receiveValue: { animations in
-                print(animations)
-            })
-            .store(in: &cancellables)
-    }
-}
+extension ExploreViewModel {}

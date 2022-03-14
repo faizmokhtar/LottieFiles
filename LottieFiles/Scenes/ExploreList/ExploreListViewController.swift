@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class ExploreListViewController: UIViewController {
 
@@ -17,10 +18,14 @@ class ExploreListViewController: UIViewController {
         view.register(ExploreCell.self, forCellReuseIdentifier: ExploreCell.reuseIdentifier)
         return view
     }()
-
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     private let viewModel: ExploreListViewModel
     
-    init(viewModel: ExploreListViewModel = ExploreListViewModel()) {
+    // MARK: - Inits
+
+    init(viewModel: ExploreListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,14 +33,27 @@ class ExploreListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupBindings()
+        viewModel.fetchList()
     }
 }
 
+// MARK: - Private Methods
+
 extension ExploreListViewController {
+    private func setupBindings() {
+        viewModel.$cellViewModels
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in self?.tableView.reloadData() }
+            .store(in: &cancellables)
+    }
+    
     private func setupViews() {
         view.addSubview(tableView)
         
@@ -48,17 +66,22 @@ extension ExploreListViewController {
     }
 }
 
+// MARK: - UITableView Data Source
+
 extension ExploreListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.cellViewModels.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ExploreCell.reuseIdentifier, for: indexPath) as! ExploreCell
-        cell.setup(viewModel: ExploreCellViewModel())
+        let viewModel = viewModel.cellViewModels[indexPath.row]
+        cell.setup(viewModel: viewModel)
         return cell
     }
 }
+
+// MARK: - UITableView Delegates
 
 extension ExploreListViewController: UITableViewDelegate {}
