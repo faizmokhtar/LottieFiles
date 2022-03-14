@@ -36,7 +36,9 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        self.tabBar.tintColor = .App.tabBarFill
+        self.tabBar.unselectedItemTintColor = .App.tabBarDefault
+
         let homeViewController = HomeViewController()
         homeViewController.tabBarItem = homeTabBarItem
         
