@@ -19,7 +19,6 @@ class ExploreViewController: UIViewController {
     lazy var viewPager: LZViewPager = {
         let view = LZViewPager()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
         return view
     }()
     
@@ -42,7 +41,6 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         viewPager.dataSource = self
-        viewPager.delegate = self
         viewPager.hostController = self
         viewPager.reload()
     }
@@ -62,8 +60,6 @@ extension ExploreViewController {
         ])
     }
 }
-
-extension ExploreViewController: LZViewPagerDelegate {}
 
 // MARK: - LZViewPager Data Source
 
@@ -90,8 +86,9 @@ extension ExploreViewController: LZViewPagerDataSource {
     func button(at index: Int) -> UIButton {
         guard let page = Pages(rawValue: index) else { return UIButton() }
         let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.setTitleColor(.label, for: .selected)
+        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         
         switch page {
         case .recent:
@@ -103,4 +100,14 @@ extension ExploreViewController: LZViewPagerDataSource {
         }
         return button
     }
+    
+    func heightForIndicator() -> CGFloat {
+        return 4.0
+    }
+
+    func colorForIndicator(at index: Int) -> UIColor {
+        return UIColor.App.primary!
+    }
+    
+    
 }
