@@ -25,11 +25,19 @@ protocol LottieFilesAPIProtocol {
 class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     
     let baseURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/lottiefiles-test.appspot.com/o/")!
+
     var queryItems = [
         URLQueryItem(name: "alt", value: "media"),
         URLQueryItem(name: "token", value: "f5acfd96-384a-4552-a0b5-399675a03826")
     ]
+
     private let decoder = JSONDecoder()
+
+    private lazy var session: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .returnCacheDataElseLoad
+        return URLSession(configuration: configuration)
+    }()
     
     func fetchAnimators() -> AnyPublisher<FeaturedAnimatorsResponse, Error> {
         guard let url = baseURL.appendingPathComponent("featuredAnimators.json")
@@ -49,7 +57,7 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
                     return Empty().eraseToAnyPublisher()
                 }
         
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: BlogsResponse.self, decoder: decoder)
             .eraseToAnyPublisher()
@@ -66,7 +74,7 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
                     return Empty().eraseToAnyPublisher()
                 }
         
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: PopularAnimationsResponse.self, decoder: decoder)
             .eraseToAnyPublisher()
@@ -84,7 +92,7 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
                 }
         
         print(url.absoluteString)
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return session.dataTaskPublisher(for: url)
             .map { $0.data }
             .decode(type: RecentAnimationsResponse.self, decoder: decoder)
             .eraseToAnyPublisher()
@@ -101,7 +109,7 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
                     return Empty().eraseToAnyPublisher()
                 }
         
-        return URLSession.shared.dataTaskPublisher(for: url)
+        return session.dataTaskPublisher(for: url)
             .map{ $0.data }
             .decode(type: FeaturedAnimationsResponse.self, decoder: decoder)
             .eraseToAnyPublisher()
