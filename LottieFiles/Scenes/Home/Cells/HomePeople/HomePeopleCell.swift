@@ -58,9 +58,11 @@ extension HomePeopleCell: SelfConfiguringCell {
 
 extension HomePeopleCell {
     private func setupViews() {
-        contentView.addSubview(cardView)
-        contentView.addSubview(imageView)
-        contentView.addSubview(nameLabel)
+        contentView.addSubviews([
+            cardView,
+            imageView,
+            nameLabel
+        ])
         
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor),

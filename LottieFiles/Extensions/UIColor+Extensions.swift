@@ -10,6 +10,12 @@ import UIKit
 extension UIColor {
     
     /// Get `UIColor` based on hex values
+    /// 
+    /// Usage:
+    ///
+    ///     UIColor(hex: "#ffffff")
+    ///
+    /// - Parameter hex: The hex value
     public convenience init?(hex: String) {
         let r, g, b, a: CGFloat
         

@@ -8,6 +8,14 @@
 import Foundation
 
 extension URL {
+
+    /// Append parameter query to URL
+    ///
+    /// Usage:
+    ///
+    ///     URL(string: "dummy").appending([URLQueryItem("param", "value"])
+    ///
+    /// - Parameter queryItems: Array of `URLQueryItem`
     func appending(_ queryItems: [URLQueryItem]) -> URL? {
         guard var urlComponents = URLComponents(
             url: self,

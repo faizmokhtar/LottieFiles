@@ -53,9 +53,11 @@ extension HomeLoginCell: SelfConfiguringCell {
 
 extension HomeLoginCell {
     private func setupViews() {
-        contentView.addSubview(dateLabel)
-        contentView.addSubview(helloLabel)
-        contentView.addSubview(loginLabel)
+        contentView.addSubviews([
+            dateLabel,
+            helloLabel,
+            loginLabel
+        ])
         
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),

@@ -64,11 +64,12 @@ extension HomeFeaturedCell: SelfConfiguringCell {
 extension HomeFeaturedCell {
     private func setupViews() {
         contentView.addSubview(cardView)
-        
-        cardView.addSubview(lottieView)
-        cardView.addSubview(titleLabel)
-        cardView.addSubview(authorLabel)
-        
+        cardView.addSubviews([
+            lottieView,
+            titleLabel,
+            authorLabel
+        ])
+                
         NSLayoutConstraint.activate([
             cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
             cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

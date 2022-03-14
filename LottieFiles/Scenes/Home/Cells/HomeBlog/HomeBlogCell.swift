@@ -51,8 +51,10 @@ extension HomeBlogCell: SelfConfiguringCell {
 
 extension HomeBlogCell {
     private func setupViews() {
-        contentView.addSubview(imageView)
-        contentView.addSubview(titleLabel)
+        contentView.addSubviews([
+            imageView,
+            titleLabel
+        ])
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

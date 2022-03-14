@@ -85,11 +85,16 @@ class ExploreCell: UITableViewCell {
 extension ExploreCell {
     private func setupViews() {
         selectionStyle = .none
-        addSubview(topView)
-        topView.addSubview(avatarImageView)
-        topView.addSubview(nameLabel)
-        topView.addSubview(usernameLabel)
-        addSubview(lottieView)
+        addSubviews([
+            topView,
+            lottieView
+        ])
+        
+        topView.addSubviews([
+            avatarImageView,
+            nameLabel,
+            usernameLabel
+        ])
         
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: topAnchor),
