@@ -16,6 +16,14 @@ class ExploreListViewController: UIViewController {
         view.dataSource = self
         view.delegate = self
         view.register(ExploreCell.self, forCellReuseIdentifier: ExploreCell.reuseIdentifier)
+        view.addSubview(refreshControl)
+        return view
+    }()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let view = UIRefreshControl()
+        view.tintColor = .App.primary
+        view.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         return view
     }()
     
@@ -42,6 +50,11 @@ class ExploreListViewController: UIViewController {
         setupBindings()
         viewModel.fetchList()
     }
+
+    @objc func didPullToRefresh() {
+        self.refreshControl.beginRefreshing()
+        viewModel.fetchList()
+    }
 }
 
 // MARK: - Private Methods
@@ -50,7 +63,10 @@ extension ExploreListViewController {
     private func setupBindings() {
         viewModel.$cellViewModels
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in self?.tableView.reloadData() }
+            .sink(receiveValue: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+                self?.tableView.reloadData()
+            })
             .store(in: &cancellables)
     }
     
