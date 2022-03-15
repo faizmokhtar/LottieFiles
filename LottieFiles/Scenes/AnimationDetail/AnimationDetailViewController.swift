@@ -14,7 +14,6 @@ class AnimationDetailViewController: UIViewController {
         let view = AnimationView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundBehavior = .pauseAndRestore
-        view.backgroundColor = .blue
         view.loopMode = .loop
         return view
     }()
