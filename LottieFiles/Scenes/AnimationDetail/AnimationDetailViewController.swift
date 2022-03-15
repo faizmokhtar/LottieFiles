@@ -39,6 +39,11 @@ class AnimationDetailViewController: UIViewController {
         return view
     }()
     
+    private lazy var displayLink: CADisplayLink = {
+        let link = CADisplayLink(target: self, selector: #selector(didRefreshDisplay))
+        return link
+    }()
+    
     private let viewModel: AnimationViewModel
 
     // MARK: - Inits
@@ -48,7 +53,12 @@ class AnimationDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         guard let url = viewModel.lottieURL else { return }
-        animationView.loadFromUrl(url)
+        Animation.loadedFrom(url: url, closure: { [weak self] animation in
+            self?.slider.minimumValue = Float(animation?.startFrame ?? 0)
+            self?.slider.maximumValue = Float(animation?.endFrame ?? 0)
+            self?.animationView.animation = animation
+            self?.animationView.play()
+        }, animationCache: LRUAnimationCache.sharedCache)
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +70,7 @@ class AnimationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        displayLink.add(to: .current, forMode: RunLoop.Mode.default)
         setupUI()
         animationView.backgroundColor = viewModel.backgroundColor
     }
@@ -72,6 +83,12 @@ class AnimationDetailViewController: UIViewController {
             playButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             animationView.play()
         }
+    }
+    
+    @objc func didRefreshDisplay() {
+        guard animationView.isAnimationPlaying else { return }
+        let currentFrame = Float(animationView.realtimeAnimationFrame)
+        slider.setValue(currentFrame, animated: true)
     }
 }
 
