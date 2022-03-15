@@ -49,6 +49,9 @@
 		4AC56F5E27DEE87D00404704 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F5D27DEE87C00404704 /* UIColor+Extensions.swift */; };
 		4AC56F6027DF025E00404704 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F5F27DF025E00404704 /* UIView+Extensions.swift */; };
 		4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6127DF075600404704 /* UIColor+Palette.swift */; };
+		4AC56F6527DF42E500404704 /* AnimationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6427DF42E400404704 /* AnimationDetailViewModel.swift */; };
+		4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6627DF430700404704 /* AnimationDetailViewController.swift */; };
+		4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */; };
 		5F9F0422E626BC38B8EF0297 /* Pods_LottieFilesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9D019EAE873454459B36E3 /* Pods_LottieFilesTests.framework */; };
 		871BD47B7DE8FA467EFC6F27 /* Pods_LottieFiles_LottieFilesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA124F214DE2056E28D80980 /* Pods_LottieFiles_LottieFilesUITests.framework */; };
 		E4A98485EFEBD9EB2C88DF7A /* Pods_LottieFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7E7EC19FB0935DE2583DD /* Pods_LottieFiles.framework */; };
@@ -119,6 +122,9 @@
 		4AC56F5D27DEE87C00404704 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		4AC56F5F27DF025E00404704 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		4AC56F6127DF075600404704 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
+		4AC56F6427DF42E400404704 /* AnimationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDetailViewModel.swift; sourceTree = "<group>"; };
+		4AC56F6627DF430700404704 /* AnimationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDetailViewController.swift; sourceTree = "<group>"; };
+		4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Extensions.swift"; sourceTree = "<group>"; };
 		4AFD81984C23B2E2DEFD0333 /* Pods-LottieFiles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFiles.debug.xcconfig"; path = "Target Support Files/Pods-LottieFiles/Pods-LottieFiles.debug.xcconfig"; sourceTree = "<group>"; };
 		4F81C5E8E70AFA84ABF2C619 /* Pods-LottieFiles-LottieFilesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFiles-LottieFilesUITests.release.xcconfig"; path = "Target Support Files/Pods-LottieFiles-LottieFilesUITests/Pods-LottieFiles-LottieFilesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		68D671B5DB4869D2B1493390 /* Pods-LottieFilesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFilesTests.release.xcconfig"; path = "Target Support Files/Pods-LottieFilesTests/Pods-LottieFilesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 				4AC56F0427D868F200404704 /* Home */,
 				4AC56F0927D869C900404704 /* Explore */,
 				4AC56F2827D9F16F00404704 /* ExploreList */,
+				4AC56F6327DF42D000404704 /* AnimationDetail */,
 				4AC56F0E27D86A3100404704 /* Profile */,
 			);
 			path = Scenes;
@@ -424,6 +431,7 @@
 				4AC56F5D27DEE87C00404704 /* UIColor+Extensions.swift */,
 				4AC56F6127DF075600404704 /* UIColor+Palette.swift */,
 				4AC56F5F27DF025E00404704 /* UIView+Extensions.swift */,
+				4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -433,6 +441,15 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4AC56F6327DF42D000404704 /* AnimationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4AC56F6427DF42E400404704 /* AnimationDetailViewModel.swift */,
+				4AC56F6627DF430700404704 /* AnimationDetailViewController.swift */,
+			);
+			path = AnimationDetail;
 			sourceTree = "<group>";
 		};
 		C0F0B9B3BB0A1EC4D1AF1774 /* Frameworks */ = {
@@ -700,6 +717,7 @@
 				4AC56F5B27DCFFD700404704 /* URL+Extensions.swift in Sources */,
 				4AC56F4D27DB3CB300404704 /* FeaturedAnimatorsResponse.swift in Sources */,
 				4AC56F0627D8690C00404704 /* HomeViewController.swift in Sources */,
+				4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */,
 				4AC56F0827D8697400404704 /* HomeViewModel.swift in Sources */,
 				4AC56F2F27DA005D00404704 /* ExploreCell.swift in Sources */,
 				4AC56F5E27DEE87D00404704 /* UIColor+Extensions.swift in Sources */,
@@ -714,12 +732,14 @@
 				4AC56F1F27D8B27200404704 /* HomeBlogCell.swift in Sources */,
 				4AC56F3D27DB2E2D00404704 /* DataResponse.swift in Sources */,
 				4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */,
+				4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */,
 				4AC56F1027D86A4400404704 /* ProfileViewModel.swift in Sources */,
 				4AC56F0D27D86A0000404704 /* ExploreViewModel.swift in Sources */,
 				4AC56F1927D89EC500404704 /* HomeFeaturedCell.swift in Sources */,
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
 				4AC56F2A27D9F1A400404704 /* ExploreListViewController.swift in Sources */,
 				4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */,
+				4AC56F6527DF42E500404704 /* AnimationDetailViewModel.swift in Sources */,
 				4AC56F2C27D9F1E600404704 /* ExploreListViewModel.swift in Sources */,
 				4AC56F0B27D869DA00404704 /* ExploreViewController.swift in Sources */,
 				4AC56F4827DB339600404704 /* RecentAnimationsResponse.swift in Sources */,

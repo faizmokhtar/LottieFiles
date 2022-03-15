@@ -100,4 +100,12 @@ extension ExploreListViewController: UITableViewDataSource {
 
 // MARK: - UITableView Delegates
 
-extension ExploreListViewController: UITableViewDelegate {}
+extension ExploreListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = viewModel.cellViewModels[indexPath.row]
+        let viewModel = AnimationDetailViewModel(
+            url: model.lottieURL)
+        let viewController = AnimationDetailViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+}
