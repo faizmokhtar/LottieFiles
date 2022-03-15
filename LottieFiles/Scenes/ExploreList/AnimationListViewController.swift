@@ -15,6 +15,7 @@ class AnimationListViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
+        view.showsVerticalScrollIndicator = false
         view.register(AnimationCell.self, forCellReuseIdentifier: AnimationCell.reuseIdentifier)
         view.addSubview(refreshControl)
         return view
