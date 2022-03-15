@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct ExploreCellViewModel {
+struct AnimationViewModel {
     
     var lottieURL: URL? {
         return URL(string: response.lottieURL)

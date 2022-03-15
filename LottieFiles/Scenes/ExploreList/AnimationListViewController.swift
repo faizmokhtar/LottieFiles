@@ -1,5 +1,5 @@
 //
-//  ExploreListViewController.swift
+//  AnimationListViewController.swift
 //  LottieFiles
 //
 //  Created by AD0502-ADE-MB-1 on 10/03/2022.
@@ -8,14 +8,14 @@
 import UIKit
 import Combine
 
-class ExploreListViewController: UIViewController {
+class AnimationListViewController: UIViewController {
 
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .plain)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.dataSource = self
         view.delegate = self
-        view.register(ExploreCell.self, forCellReuseIdentifier: ExploreCell.reuseIdentifier)
+        view.register(AnimationCell.self, forCellReuseIdentifier: AnimationCell.reuseIdentifier)
         view.addSubview(refreshControl)
         return view
     }()
@@ -29,11 +29,11 @@ class ExploreListViewController: UIViewController {
     
     private var cancellables = Set<AnyCancellable>()
     
-    private let viewModel: ExploreListViewModel
+    private let viewModel: AnimationListViewModel
     
     // MARK: - Inits
 
-    init(viewModel: ExploreListViewModel) {
+    init(viewModel: AnimationListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -59,7 +59,7 @@ class ExploreListViewController: UIViewController {
 
 // MARK: - Private Methods
 
-extension ExploreListViewController {
+extension AnimationListViewController {
     private func setupBindings() {
         viewModel.$cellViewModels
             .receive(on: RunLoop.main)
@@ -84,14 +84,14 @@ extension ExploreListViewController {
 
 // MARK: - UITableView Data Source
 
-extension ExploreListViewController: UITableViewDataSource {
+extension AnimationListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.cellViewModels.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ExploreCell.reuseIdentifier, for: indexPath) as! ExploreCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AnimationCell.reuseIdentifier, for: indexPath) as! AnimationCell
         let viewModel = viewModel.cellViewModels[indexPath.row]
         cell.setup(viewModel: viewModel)
         return cell
@@ -100,7 +100,7 @@ extension ExploreListViewController: UITableViewDataSource {
 
 // MARK: - UITableView Delegates
 
-extension ExploreListViewController: UITableViewDelegate {
+extension AnimationListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = viewModel.cellViewModels[indexPath.row]
         let viewModel = AnimationDetailViewModel(

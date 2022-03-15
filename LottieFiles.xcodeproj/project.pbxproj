@@ -26,10 +26,10 @@
 		4AC56F1C27D8A84C00404704 /* HomePeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F1B27D8A84C00404704 /* HomePeopleCell.swift */; };
 		4AC56F1F27D8B27200404704 /* HomeBlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F1E27D8B27200404704 /* HomeBlogCell.swift */; };
 		4AC56F2227D8DEEF00404704 /* HomeSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2127D8DEEF00404704 /* HomeSectionHeader.swift */; };
-		4AC56F2A27D9F1A400404704 /* ExploreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2927D9F1A400404704 /* ExploreListViewController.swift */; };
-		4AC56F2C27D9F1E600404704 /* ExploreListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2B27D9F1E600404704 /* ExploreListViewModel.swift */; };
-		4AC56F2F27DA005D00404704 /* ExploreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2E27DA005D00404704 /* ExploreCell.swift */; };
-		4AC56F3127DA143000404704 /* ExploreCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F3027DA143000404704 /* ExploreCellViewModel.swift */; };
+		4AC56F2A27D9F1A400404704 /* AnimationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2927D9F1A400404704 /* AnimationListViewController.swift */; };
+		4AC56F2C27D9F1E600404704 /* AnimationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */; };
+		4AC56F2F27DA005D00404704 /* AnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F2E27DA005D00404704 /* AnimationCell.swift */; };
+		4AC56F3127DA143000404704 /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F3027DA143000404704 /* AnimationViewModel.swift */; };
 		4AC56F3427DB042A00404704 /* LottieFilesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F3327DB042A00404704 /* LottieFilesAPIProvider.swift */; };
 		4AC56F3727DB240C00404704 /* FeaturedAnimationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F3627DB240C00404704 /* FeaturedAnimationsResponse.swift */; };
 		4AC56F3927DB24B500404704 /* FeaturedAnimationsResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F3827DB24B400404704 /* FeaturedAnimationsResponseTests.swift */; };
@@ -99,10 +99,10 @@
 		4AC56F1B27D8A84C00404704 /* HomePeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePeopleCell.swift; sourceTree = "<group>"; };
 		4AC56F1E27D8B27200404704 /* HomeBlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBlogCell.swift; sourceTree = "<group>"; };
 		4AC56F2127D8DEEF00404704 /* HomeSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSectionHeader.swift; sourceTree = "<group>"; };
-		4AC56F2927D9F1A400404704 /* ExploreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListViewController.swift; sourceTree = "<group>"; };
-		4AC56F2B27D9F1E600404704 /* ExploreListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreListViewModel.swift; sourceTree = "<group>"; };
-		4AC56F2E27DA005D00404704 /* ExploreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCell.swift; sourceTree = "<group>"; };
-		4AC56F3027DA143000404704 /* ExploreCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCellViewModel.swift; sourceTree = "<group>"; };
+		4AC56F2927D9F1A400404704 /* AnimationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationListViewController.swift; sourceTree = "<group>"; };
+		4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationListViewModel.swift; sourceTree = "<group>"; };
+		4AC56F2E27DA005D00404704 /* AnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCell.swift; sourceTree = "<group>"; };
+		4AC56F3027DA143000404704 /* AnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModel.swift; sourceTree = "<group>"; };
 		4AC56F3327DB042A00404704 /* LottieFilesAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieFilesAPIProvider.swift; sourceTree = "<group>"; };
 		4AC56F3627DB240C00404704 /* FeaturedAnimationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAnimationsResponse.swift; sourceTree = "<group>"; };
 		4AC56F3827DB24B400404704 /* FeaturedAnimationsResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAnimationsResponseTests.swift; sourceTree = "<group>"; };
@@ -323,8 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				4AC56F2D27D9FFDD00404704 /* Cells */,
-				4AC56F2B27D9F1E600404704 /* ExploreListViewModel.swift */,
-				4AC56F2927D9F1A400404704 /* ExploreListViewController.swift */,
+				4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */,
+				4AC56F2927D9F1A400404704 /* AnimationListViewController.swift */,
 			);
 			path = ExploreList;
 			sourceTree = "<group>";
@@ -332,8 +332,8 @@
 		4AC56F2D27D9FFDD00404704 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4AC56F3027DA143000404704 /* ExploreCellViewModel.swift */,
-				4AC56F2E27DA005D00404704 /* ExploreCell.swift */,
+				4AC56F3027DA143000404704 /* AnimationViewModel.swift */,
+				4AC56F2E27DA005D00404704 /* AnimationCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -713,13 +713,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AC56F3127DA143000404704 /* ExploreCellViewModel.swift in Sources */,
+				4AC56F3127DA143000404704 /* AnimationViewModel.swift in Sources */,
 				4AC56F5B27DCFFD700404704 /* URL+Extensions.swift in Sources */,
 				4AC56F4D27DB3CB300404704 /* FeaturedAnimatorsResponse.swift in Sources */,
 				4AC56F0627D8690C00404704 /* HomeViewController.swift in Sources */,
 				4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */,
 				4AC56F0827D8697400404704 /* HomeViewModel.swift in Sources */,
-				4AC56F2F27DA005D00404704 /* ExploreCell.swift in Sources */,
+				4AC56F2F27DA005D00404704 /* AnimationCell.swift in Sources */,
 				4AC56F5E27DEE87D00404704 /* UIColor+Extensions.swift in Sources */,
 				4AC56F1527D886AB00404704 /* HomeLoginCell.swift in Sources */,
 				4AC56F1227D86A5500404704 /* ProfileViewController.swift in Sources */,
@@ -737,10 +737,10 @@
 				4AC56F0D27D86A0000404704 /* ExploreViewModel.swift in Sources */,
 				4AC56F1927D89EC500404704 /* HomeFeaturedCell.swift in Sources */,
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
-				4AC56F2A27D9F1A400404704 /* ExploreListViewController.swift in Sources */,
+				4AC56F2A27D9F1A400404704 /* AnimationListViewController.swift in Sources */,
 				4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */,
 				4AC56F6527DF42E500404704 /* AnimationDetailViewModel.swift in Sources */,
-				4AC56F2C27D9F1E600404704 /* ExploreListViewModel.swift in Sources */,
+				4AC56F2C27D9F1E600404704 /* AnimationListViewModel.swift in Sources */,
 				4AC56F0B27D869DA00404704 /* ExploreViewController.swift in Sources */,
 				4AC56F4827DB339600404704 /* RecentAnimationsResponse.swift in Sources */,
 				4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */,

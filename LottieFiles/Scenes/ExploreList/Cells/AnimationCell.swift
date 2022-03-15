@@ -1,5 +1,5 @@
 //
-//  ExploreCell.swift
+//  AnimationCell.swift
 //  LottieFiles
 //
 //  Created by AD0502-ADE-MB-1 on 10/03/2022.
@@ -9,8 +9,8 @@ import UIKit
 import Lottie
 import SDWebImage
 
-class ExploreCell: UITableViewCell {
-    static let reuseIdentifier = "ExploreCell"
+class AnimationCell: UITableViewCell {
+    static let reuseIdentifier = "AnimationCell"
 
     lazy var topView: UIView = {
         let view = UIView()
@@ -57,7 +57,7 @@ class ExploreCell: UITableViewCell {
         return view
     }()
 
-    private var viewModel: ExploreCellViewModel?
+    private var viewModel: AnimationViewModel?
 
     // MARK: - Inits
 
@@ -70,7 +70,7 @@ class ExploreCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(viewModel: ExploreCellViewModel) {
+    func setup(viewModel: AnimationViewModel) {
         self.viewModel = viewModel
         self.nameLabel.text = viewModel.name
         self.usernameLabel.text = viewModel.username
@@ -82,7 +82,7 @@ class ExploreCell: UITableViewCell {
 
 // MARK: - Private Methods
 
-extension ExploreCell {
+extension AnimationCell {
     private func setupViews() {
         selectionStyle = .none
         addSubviews([

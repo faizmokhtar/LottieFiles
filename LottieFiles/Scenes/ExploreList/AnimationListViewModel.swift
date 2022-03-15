@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-class ExploreListViewModel: ObservableObject {
+class AnimationListViewModel: ObservableObject {
     
-    @Published var cellViewModels = [ExploreCellViewModel]()
+    @Published var cellViewModels = [AnimationViewModel]()
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -40,7 +40,7 @@ class ExploreListViewModel: ObservableObject {
         apiProvider.fetchRecentAnimations()
             .map { $0.data }
             .map { $0.results }
-            .map { $0.map { ExploreCellViewModel(response: $0) } }
+            .map { $0.map { AnimationViewModel(response: $0) } }
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)
@@ -54,7 +54,7 @@ class ExploreListViewModel: ObservableObject {
         apiProvider.fetchFeaturedAnimations()
             .map({ $0.data })
             .map({ $0.results })
-            .map { $0.map { ExploreCellViewModel(response: $0) } }
+            .map { $0.map { AnimationViewModel(response: $0) } }
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)
@@ -68,7 +68,7 @@ class ExploreListViewModel: ObservableObject {
         apiProvider.fetchPopularAnimations()
             .map { $0.data }
             .map { $0.results }
-            .map { $0.map { ExploreCellViewModel(response: $0) } }
+            .map { $0.map { AnimationViewModel(response: $0) } }
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)

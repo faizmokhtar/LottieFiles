@@ -72,14 +72,14 @@ extension ExploreViewController: LZViewPagerDataSource {
         guard let page = Pages(rawValue: index) else { return UIViewController() }
         switch page {
         case .recent:
-            let viewModel = ExploreListViewModel(type: .recent)
-            return ExploreListViewController(viewModel: viewModel)
+            let viewModel = AnimationListViewModel(type: .recent)
+            return AnimationListViewController(viewModel: viewModel)
         case .featured:
-            let viewModel = ExploreListViewModel(type: .featured)
-            return ExploreListViewController(viewModel: viewModel)
+            let viewModel = AnimationListViewModel(type: .featured)
+            return AnimationListViewController(viewModel: viewModel)
         case .popular:
-            let viewModel = ExploreListViewModel(type: .popular)
-            return ExploreListViewController(viewModel: viewModel)
+            let viewModel = AnimationListViewModel(type: .popular)
+            return AnimationListViewController(viewModel: viewModel)
         }
     }
     
