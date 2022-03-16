@@ -51,6 +51,7 @@
 		4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6127DF075600404704 /* UIColor+Palette.swift */; };
 		4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6627DF430700404704 /* AnimationDetailViewController.swift */; };
 		4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */; };
+		4AC56F6B27E075DA00404704 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56F6A27E075DA00404704 /* Section.swift */; };
 		5F9F0422E626BC38B8EF0297 /* Pods_LottieFilesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9D019EAE873454459B36E3 /* Pods_LottieFilesTests.framework */; };
 		871BD47B7DE8FA467EFC6F27 /* Pods_LottieFiles_LottieFilesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA124F214DE2056E28D80980 /* Pods_LottieFiles_LottieFilesUITests.framework */; };
 		E4A98485EFEBD9EB2C88DF7A /* Pods_LottieFiles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9F7E7EC19FB0935DE2583DD /* Pods_LottieFiles.framework */; };
@@ -123,6 +124,7 @@
 		4AC56F6127DF075600404704 /* UIColor+Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Palette.swift"; sourceTree = "<group>"; };
 		4AC56F6627DF430700404704 /* AnimationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationDetailViewController.swift; sourceTree = "<group>"; };
 		4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnimationView+Extensions.swift"; sourceTree = "<group>"; };
+		4AC56F6A27E075DA00404704 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		4AFD81984C23B2E2DEFD0333 /* Pods-LottieFiles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFiles.debug.xcconfig"; path = "Target Support Files/Pods-LottieFiles/Pods-LottieFiles.debug.xcconfig"; sourceTree = "<group>"; };
 		4F81C5E8E70AFA84ABF2C619 /* Pods-LottieFiles-LottieFilesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFiles-LottieFilesUITests.release.xcconfig"; path = "Target Support Files/Pods-LottieFiles-LottieFilesUITests/Pods-LottieFiles-LottieFilesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		68D671B5DB4869D2B1493390 /* Pods-LottieFilesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFilesTests.release.xcconfig"; path = "Target Support Files/Pods-LottieFilesTests/Pods-LottieFilesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				4AC56F1327D8868400404704 /* Cells */,
 				4AC56F0727D8697400404704 /* HomeViewModel.swift */,
 				4AC56F0527D8690C00404704 /* HomeViewController.swift */,
+				4AC56F6A27E075DA00404704 /* Section.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				4AC56F3427DB042A00404704 /* LottieFilesAPIProvider.swift in Sources */,
 				4AC56F1C27D8A84C00404704 /* HomePeopleCell.swift in Sources */,
 				4AC56F1F27D8B27200404704 /* HomeBlogCell.swift in Sources */,
+				4AC56F6B27E075DA00404704 /* Section.swift in Sources */,
 				4AC56F3D27DB2E2D00404704 /* DataResponse.swift in Sources */,
 				4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */,
 				4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */,

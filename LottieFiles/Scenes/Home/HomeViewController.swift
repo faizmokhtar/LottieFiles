@@ -6,27 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 protocol SelfConfiguringCell {
     static var reuseIdentifier: String { get }
     func configure(with item: HomeItem)
-}
-
-enum Section: Hashable {
-    case login
-    case featured
-    case people
-    case blog
-}
-
-typealias HomeLayoutSectionTuple = (section: Section, item: [HomeItem])
-
-struct HomeItem: Hashable, Equatable {
-    let id = UUID()
-    
-    static func == (lhs: HomeItem, rhs: HomeItem) -> Bool {
-        lhs.id == rhs.id
-    }
 }
 
 class HomeViewController: UIViewController {
@@ -35,8 +19,8 @@ class HomeViewController: UIViewController {
 
     private lazy var refreshControl: UIRefreshControl = {
         let view = UIRefreshControl()
-        view.tintColor = .red
-        view.addTarget(self, action: #selector(didRefreshControl), for: .valueChanged)
+        view.tintColor = .App.primary
+        view.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         return view
     }()
     
@@ -55,16 +39,11 @@ class HomeViewController: UIViewController {
         view.addSubview(refreshControl)
         return view
     }()
-    
-    let store: [HomeLayoutSectionTuple] = [
-        (.login, [HomeItem()]),
-        (.featured, [HomeItem(), HomeItem()]),
-        (.blog, [HomeItem(), HomeItem(), HomeItem()]),
-        (.people, [HomeItem(), HomeItem(), HomeItem(), HomeItem(), HomeItem(), HomeItem()])
-    ]
-    
+        
     var dataSource: UICollectionViewDiffableDataSource<Section, HomeItem>?
     
+    private var cancellables = Set<AnyCancellable>()
+
     private let viewModel: HomeViewModel
     
     // MARK: - Inits
@@ -83,11 +62,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupBindings()
         createDataSource()
-        reloadData()
+        viewModel.fetchSections()
     }
     
-    @objc func didRefreshControl() {}
+    @objc func didPullToRefresh() {
+        refreshControl.beginRefreshing()
+        viewModel.fetchSections()
+    }
 }
 
 extension HomeViewController {
@@ -102,13 +85,23 @@ extension HomeViewController {
         ])
     }
     
+    private func setupBindings() {
+        viewModel.$sections
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+                self?.reloadData()
+            })
+            .store(in: &cancellables)
+    }
+    
     private func createDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, HomeItem>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let sectionIdentifier = self.dataSource?.snapshot().sectionIdentifier(containingItem: item) else {
                 return nil
             }
-
-            switch sectionIdentifier {
+            
+            switch sectionIdentifier.type {
             case .login:
                 return self.configure(HomeLoginCell.self, with: item, for: indexPath)
             case .featured:
@@ -125,16 +118,17 @@ extension HomeViewController {
             
             guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else { return nil }
             guard let section = self?.dataSource?.snapshot().sectionIdentifier(containingItem: item) else { return nil }
-            sectionHeader.titleLabel.text = "Test"
+            sectionHeader.titleLabel.text = section.title
             return sectionHeader
         }
     }
     
     private func reloadData() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, HomeItem>()
-        store.forEach { layout in
-            snapshot.appendSections([layout.section])
-            snapshot.appendItems(layout.item, toSection: layout.section)
+        snapshot.appendSections(viewModel.sections)
+        
+        for section in viewModel.sections {
+            snapshot.appendItems(section.items, toSection: section)
         }
         
         dataSource?.apply(snapshot)
@@ -167,9 +161,9 @@ extension HomeViewController {
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-            let store = self.store[sectionIndex]
+            let section = self.viewModel.sections[sectionIndex]
             
-            switch store.section {
+            switch section.type {
             case .login:
                 return self.makeLoginSection()
             case .featured:

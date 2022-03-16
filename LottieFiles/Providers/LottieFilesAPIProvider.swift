@@ -40,6 +40,11 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     }()
     
     func fetchAnimators() -> AnyPublisher<FeaturedAnimatorsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "alt", value: "media"),
+            URLQueryItem(name: "token", value: "5b3e8205-b317-45c4-a5ce-36c9dc57911d")
+        ]
+
         guard let url = baseURL.appendingPathComponent("featuredAnimators.json")
                 .appending(queryItems) else {
                     return Empty().eraseToAnyPublisher()
@@ -52,6 +57,11 @@ class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     }
     
     func fetchBlogs() -> AnyPublisher<BlogsResponse, Error> {
+        let queryItems = [
+            URLQueryItem(name: "alt", value: "media"),
+            URLQueryItem(name: "token", value: "c6bf2153-7a69-4a47-9e3a-6f7500d8f523")
+        ]
+
         guard let url = baseURL.appendingPathComponent("blogs.json")
                 .appending(queryItems) else {
                     return Empty().eraseToAnyPublisher()

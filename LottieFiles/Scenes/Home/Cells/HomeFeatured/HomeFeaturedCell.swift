@@ -6,36 +6,51 @@
 //
 
 import UIKit
+import Lottie
 
 class HomeFeaturedCell: UICollectionViewCell {
-    let cardView: UIView = {
+    private lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
         view.layer.cornerCurve = .continuous
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
+        view.layer.cornerRadius = 20.0
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
         return view
     }()
     
-    let lottieView: UIView = {
+    private lazy var lottieView: AnimationView = {
+        let view = AnimationView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundBehavior = .pauseAndRestore
+        view.contentMode = .scaleAspectFit
+        view.loopMode = .loop
+        return view
+    }()
+    
+    private lazy var bottomView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
         return view
     }()
     
-    let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Label"
+        view.font = .systemFont(ofSize: 15, weight: .medium)
+        view.textColor = .label
+        view.textAlignment = .left
+        view.numberOfLines = 0
         return view
     }()
     
-    let authorLabel: UILabel = {
+    private lazy var authorLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "faiz mokhtar"
+        view.font = .systemFont(ofSize: 13, weight: .regular)
+        view.textColor = .secondaryLabel
         return view
     }()
     
@@ -57,37 +72,55 @@ extension HomeFeaturedCell: SelfConfiguringCell {
     }
     
     func configure(with item: HomeItem) {
-        
+        lottieView.backgroundColor = item.backgroundColor
+        self.titleLabel.text = item.name
+        self.authorLabel.text = item.authorName
+        guard let lottieURL = item.animationURL else { return }
+        Animation.loadedFrom(url: lottieURL, closure: { [weak self] animation in
+            self?.lottieView.animation = animation
+            self?.lottieView.play()
+        }, animationCache: LRUAnimationCache.sharedCache)
     }
 }
 
 extension HomeFeaturedCell {
     private func setupViews() {
-        contentView.addSubview(cardView)
+        addSubviews([
+            cardView,
+        ])
         cardView.addSubviews([
             lottieView,
+            bottomView,
+        ])
+        bottomView.addSubviews([
             titleLabel,
             authorLabel
         ])
                 
         NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cardView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cardView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cardView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            cardView.topAnchor.constraint(equalTo: topAnchor),
+            cardView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            cardView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cardView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             lottieView.topAnchor.constraint(equalTo: cardView.topAnchor),
             lottieView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor),
             lottieView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+            lottieView.heightAnchor.constraint(equalToConstant: 310),
             
-            titleLabel.topAnchor.constraint(equalTo: lottieView.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
+            bottomView.topAnchor.constraint(equalTo: lottieView.bottomAnchor, constant: 16),
+            bottomView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
+            bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
+            bottomView.bottomAnchor.constraint(lessThanOrEqualTo: cardView.bottomAnchor, constant: -16),
+            
+            titleLabel.topAnchor.constraint(equalTo: bottomView.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor),
             
             authorLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            authorLabel.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -16),
-            authorLabel.bottomAnchor.constraint(equalTo: cardView.bottomAnchor, constant: -16)
+            authorLabel.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor),
+            authorLabel.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor),
+            authorLabel.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor)
         ])
     }
 }

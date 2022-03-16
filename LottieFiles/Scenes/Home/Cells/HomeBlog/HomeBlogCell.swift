@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeBlogCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
@@ -20,7 +21,6 @@ class HomeBlogCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
         view.lineBreakMode = .byTruncatingTail
@@ -45,7 +45,8 @@ extension HomeBlogCell: SelfConfiguringCell {
     }
     
     func configure(with item: HomeItem) {
-        
+        titleLabel.text = item.blogTitle
+        imageView.sd_setImage(with: item.blogImageURL, placeholderImage: nil)
     }
 }
 

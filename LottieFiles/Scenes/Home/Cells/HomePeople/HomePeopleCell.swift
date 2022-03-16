@@ -11,7 +11,6 @@ class HomePeopleCell: UICollectionViewCell {
     private let cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .blue
         view.layer.cornerCurve = .continuous
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
@@ -22,7 +21,6 @@ class HomePeopleCell: UICollectionViewCell {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
-        view.backgroundColor = .red
         view.layer.cornerRadius = 20
         return view
     }()
@@ -30,7 +28,9 @@ class HomePeopleCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .yellow
+        view.textAlignment = .left
+        view.font = .systemFont(ofSize: 16, weight: .medium)
+        view.textColor = .label
         return view
     }()
     
@@ -52,7 +52,8 @@ extension HomePeopleCell: SelfConfiguringCell {
     }
     
     func configure(with item: HomeItem) {
-        
+        self.nameLabel.text = item.avatarName
+        self.imageView.sd_setImage(with: item.avatarUrl, placeholderImage: nil)
     }
 }
 
