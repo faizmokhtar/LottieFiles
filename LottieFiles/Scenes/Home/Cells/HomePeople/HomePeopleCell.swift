@@ -8,12 +8,15 @@
 import UIKit
 
 class HomePeopleCell: UICollectionViewCell {
+
     private let cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerCurve = .continuous
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
+        view.backgroundColor = .white
+        view.dropShadow()
         return view
     }()
 

@@ -48,6 +48,14 @@ class AnimationCell: UITableViewCell {
         return view
     }()
     
+    lazy var loadingIndicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .large)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.tintColor = .App.primary
+        view.hidesWhenStopped = true
+        return view
+    }()
+
     lazy var lottieView: AnimationView = {
         let view = AnimationView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +84,13 @@ class AnimationCell: UITableViewCell {
         self.usernameLabel.text = viewModel.username
         self.avatarImageView.sd_setImage(with: viewModel.avatarURL, placeholderImage: UIImage(named: ""))
         self.lottieView.backgroundColor = viewModel.backgroundColor
-        loadLottie(url: viewModel.lottieURL)
+        loadingIndicatorView.startAnimating()
+        guard let url = viewModel.lottieURL else { return }
+        Animation.loadedFrom(url: url, closure: { [weak self] animation in
+            self?.lottieView.animation = animation
+            self?.lottieView.play()
+            self?.loadingIndicatorView.stopAnimating()
+        }, animationCache: LRUAnimationCache.sharedCache)
     }
 }
 
@@ -89,6 +103,8 @@ extension AnimationCell {
             topView,
             lottieView
         ])
+        
+        avatarImageView.addSubview(loadingIndicatorView)
         
         topView.addSubviews([
             avatarImageView,
@@ -106,6 +122,9 @@ extension AnimationCell {
             avatarImageView.heightAnchor.constraint(equalToConstant: 40),
             avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
+            
+            loadingIndicatorView.centerXAnchor.constraint(equalTo: avatarImageView.centerXAnchor),
+            loadingIndicatorView.centerYAnchor.constraint(equalTo: avatarImageView.centerYAnchor),
 
             nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 10),

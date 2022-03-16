@@ -15,9 +15,8 @@ class HomeFeaturedCell: UICollectionViewCell {
         view.layer.cornerCurve = .continuous
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
-        view.layer.cornerRadius = 20.0
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
+        view.dropShadow()
+        view.backgroundColor = .white
         return view
     }()
     

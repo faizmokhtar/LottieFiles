@@ -107,7 +107,8 @@ extension HomeViewController {
             case .featured:
                 return self.configure(HomeFeaturedCell.self, with: item, for: indexPath)
             case .people:
-                return self.configure(HomePeopleCell.self, with: item, for: indexPath)
+                let cell = self.configure(HomePeopleCell.self, with: item, for: indexPath)
+                return cell
             case .blog:
                 return self.configure(HomeBlogCell.self, with: item, for: indexPath)
             }

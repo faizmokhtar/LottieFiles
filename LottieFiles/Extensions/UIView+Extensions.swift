@@ -22,4 +22,18 @@ extension UIView {
             self.addSubview(view)
         }
     }
+    
+    /// Add drop shadow to the view
+    ///
+    /// Usage:
+    ///
+    ///     views.dropShadow()
+    func dropShadow() {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowOffset = CGSize(width: -1, height: 4)
+        layer.shadowRadius = 2
+    }
+
 }
