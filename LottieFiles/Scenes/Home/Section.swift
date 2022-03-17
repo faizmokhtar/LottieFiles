@@ -64,8 +64,8 @@ struct HomeItem: Equatable {
 
     // MARK: - Inits
 
+    private(set) var response: LottieResponse?
     private var animatorResponse: AnimatorResponse?
-    private var response: LottieResponse?
     private var blogResponse: Blog?
     
     init(response: LottieResponse) {

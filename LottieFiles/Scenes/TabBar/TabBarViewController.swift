@@ -41,7 +41,8 @@ class TabBarViewController: UITabBarController {
         self.tabBar.unselectedItemTintColor = .App.tabBarDefault
 
         let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = homeTabBarItem
+        let homeRootViewController = UINavigationController(rootViewController: homeViewController)
+        homeRootViewController.tabBarItem = homeTabBarItem
         
         let exploreViewController = ExploreViewController()
         let exploreRootViewController = UINavigationController(rootViewController: exploreViewController)
@@ -51,7 +52,7 @@ class TabBarViewController: UITabBarController {
         profileViewController.tabBarItem = profileTabBarItem
         
         setViewControllers([
-            homeViewController,
+            homeRootViewController,
             exploreRootViewController,
             profileViewController
         ], animated: true)

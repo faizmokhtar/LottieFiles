@@ -37,6 +37,7 @@ class HomeViewController: UIViewController {
         view.register(HomeBlogCell.self, forCellWithReuseIdentifier: HomeBlogCell.reuseIdentifier)
         view.register(HomeSectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeSectionHeader.reuseIdentifier)
         view.addSubview(refreshControl)
+        view.delegate = self
         return view
     }()
         
@@ -70,6 +71,19 @@ class HomeViewController: UIViewController {
     @objc func didPullToRefresh() {
         refreshControl.beginRefreshing()
         viewModel.fetchSections()
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let selectedItem = dataSource?.itemIdentifier(for: indexPath),
+              let response = selectedItem.response else {
+                  return
+              }
+        
+        let viewModel = AnimationViewModel(response: response)
+        let viewController = AnimationDetailViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
