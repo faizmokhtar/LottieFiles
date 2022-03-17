@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4A31C90627D784DE00450865 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A31C90527D784DE00450865 /* TabBarViewController.swift */; };
+		4AA8A01027E3090700098557 /* AnimationShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A00F27E3090700098557 /* AnimationShareViewController.swift */; };
 		4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AD27D70F550066136A /* AppDelegate.swift */; };
 		4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AF27D70F550066136A /* SceneDelegate.swift */; };
 		4AABF7B727D70F590066136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AABF7B627D70F590066136A /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		3900F028799A2FD678C05A3A /* Pods-LottieFiles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LottieFiles.release.xcconfig"; path = "Target Support Files/Pods-LottieFiles/Pods-LottieFiles.release.xcconfig"; sourceTree = "<group>"; };
 		4A31C90527D784DE00450865 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		4AA8A00F27E3090700098557 /* AnimationShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationShareViewController.swift; sourceTree = "<group>"; };
 		4AABF7AA27D70F550066136A /* LottieFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottieFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AABF7AD27D70F550066136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AABF7AF27D70F550066136A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				4AC56F0927D869C900404704 /* Explore */,
 				4AC56F2827D9F16F00404704 /* ExploreList */,
 				4AC56F6327DF42D000404704 /* AnimationDetail */,
+				4AA8A00C27E308CE00098557 /* AnimationShare */,
 				4AC56F0E27D86A3100404704 /* Profile */,
 			);
 			path = Scenes;
@@ -182,6 +185,14 @@
 				4A31C90527D784DE00450865 /* TabBarViewController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		4AA8A00C27E308CE00098557 /* AnimationShare */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A00F27E3090700098557 /* AnimationShareViewController.swift */,
+			);
+			path = AnimationShare;
 			sourceTree = "<group>";
 		};
 		4AABF7A127D70F540066136A = {
@@ -726,6 +737,7 @@
 				4A31C90627D784DE00450865 /* TabBarViewController.swift in Sources */,
 				4AC56F4327DB2FAB00404704 /* PopularAnimationsResponse.swift in Sources */,
 				4AC56F3F27DB2E4900404704 /* LottieResponse.swift in Sources */,
+				4AA8A01027E3090700098557 /* AnimationShareViewController.swift in Sources */,
 				4AC56F6027DF025E00404704 /* UIView+Extensions.swift in Sources */,
 				4AC56F3427DB042A00404704 /* LottieFilesAPIProvider.swift in Sources */,
 				4AC56F1C27D8A84C00404704 /* HomePeopleCell.swift in Sources */,

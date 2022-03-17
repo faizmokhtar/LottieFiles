@@ -52,6 +52,15 @@ class AnimationDetailViewController: UIViewController {
         return view
     }()
     
+    private lazy var instaStoriesButtonItem: UIBarButtonItem = {
+        let view = UIBarButtonItem(
+            image: UIImage(systemName: "video.circle"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedInstaStoriesButton))
+        return view
+    }()
+    
     private let viewModel: AnimationViewModel
 
     // MARK: - Inits
@@ -109,11 +118,21 @@ class AnimationDetailViewController: UIViewController {
         
         self.present(activityViewController, animated: true, completion: nil)
     }
+    
+    @objc func didTappedInstaStoriesButton() {
+        let viewController = AnimationShareViewController(viewModel: viewModel)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .pageSheet
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        present(navigationController, animated: true, completion: nil)
+    }
 }
 
 extension AnimationDetailViewController {
     private func setupUI() {
-        navigationItem.rightBarButtonItem = shareBarButtonItem
+        navigationItem.rightBarButtonItems = [instaStoriesButtonItem, shareBarButtonItem]
         
         view.addSubviews([
             animationView,

@@ -35,6 +35,11 @@ struct AnimationViewModel {
         return URL(string: gifURL)
     }
     
+    var videoURL: URL? {
+        guard let videoURL = response.videoURL else { return nil }
+        return URL(string: videoURL)
+    }
+    
     // MARK: - Inits
 
     private let response: LottieResponse
