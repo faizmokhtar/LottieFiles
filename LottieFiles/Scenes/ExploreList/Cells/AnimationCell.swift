@@ -30,7 +30,6 @@ class AnimationCell: UITableViewCell {
     lazy var nameLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Animation name goes here"
         view.font = .systemFont(ofSize: 14, weight: .medium)
         view.numberOfLines = 0
         view.textAlignment = .left
@@ -40,7 +39,6 @@ class AnimationCell: UITableViewCell {
     lazy var usernameLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Username goes here"
         view.font = .systemFont(ofSize: 14, weight: .regular)
         view.textColor = .secondaryLabel
         view.numberOfLines = 0
@@ -90,7 +88,8 @@ class AnimationCell: UITableViewCell {
             self?.lottieView.animation = animation
             self?.lottieView.play()
             self?.loadingIndicatorView.stopAnimating()
-        }, animationCache: LRUAnimationCache.sharedCache)
+        }, animationCache: nil)
+        
     }
 }
 
@@ -104,7 +103,7 @@ extension AnimationCell {
             lottieView
         ])
         
-        avatarImageView.addSubview(loadingIndicatorView)
+        lottieView.addSubview(loadingIndicatorView)
         
         topView.addSubviews([
             avatarImageView,
@@ -141,14 +140,5 @@ extension AnimationCell {
             lottieView.bottomAnchor.constraint(equalTo: bottomAnchor),
             lottieView.heightAnchor.constraint(equalTo: lottieView.widthAnchor),
         ])
-    }
-    
-    private func loadLottie(url: URL?) {
-        guard let url = url else { return }
-        Animation.loadedFrom(url: url, closure: { [weak self] animation in
-            guard let self = self else { return }
-            self.lottieView.animation = animation
-            self.lottieView.play()
-        }, animationCache: LRUAnimationCache.sharedCache)
-    }
+    }    
 }

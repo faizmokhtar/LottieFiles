@@ -10,6 +10,8 @@ import Lottie
 
 class AnimationDetailViewController: UIViewController {
 
+    // MARK: - Outlets
+
     private lazy var animationView: AnimationView = {
         let view = AnimationView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +30,7 @@ class AnimationDetailViewController: UIViewController {
         let view = UIButton(type: .custom)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        view.tintColor = .App.secondary
         view.addTarget(self, action: #selector(didTappedPlayButton), for: .touchUpInside)
         return view
     }()
@@ -35,6 +38,7 @@ class AnimationDetailViewController: UIViewController {
     private lazy var slider: UISlider = {
         let view = UISlider()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.tintColor = .App.primary
         return view
     }()
     
@@ -43,24 +47,26 @@ class AnimationDetailViewController: UIViewController {
         return link
     }()
     
+    private lazy var closeBarButtonItem: UIBarButtonItem = {
+        let view = UIBarButtonItem(
+            image: UIImage(systemName: "arrow.backward"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedCloseButton))
+        view.tintColor = .App.secondary
+        return view
+    }()
+    
     private lazy var shareBarButtonItem: UIBarButtonItem = {
         let view = UIBarButtonItem(
             image: UIImage(systemName: "square.and.arrow.up.fill"),
             style: .plain,
             target: self,
             action: #selector(didTappedShareButton))
+        view.tintColor = .App.secondary
         return view
     }()
-    
-    private lazy var instaStoriesButtonItem: UIBarButtonItem = {
-        let view = UIBarButtonItem(
-            image: UIImage(systemName: "video.circle"),
-            style: .plain,
-            target: self,
-            action: #selector(didTappedInstaStoriesButton))
-        return view
-    }()
-    
+
     private let viewModel: AnimationViewModel
 
     // MARK: - Inits
@@ -91,7 +97,11 @@ class AnimationDetailViewController: UIViewController {
         setupUI()
         animationView.backgroundColor = viewModel.backgroundColor
     }
-    
+}
+
+// MARK: -  Actions
+
+extension AnimationDetailViewController {
     @objc func didTappedPlayButton() {
         if animationView.isAnimationPlaying {
             playButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
@@ -109,17 +119,6 @@ class AnimationDetailViewController: UIViewController {
     }
     
     @objc func didTappedShareButton() {
-        let text = viewModel.name
-        guard let url = viewModel.gifURL else { return }
-        
-        let activityViewController = UIActivityViewController(
-            activityItems: [text, url],
-            applicationActivities:nil)
-        
-        self.present(activityViewController, animated: true, completion: nil)
-    }
-    
-    @objc func didTappedInstaStoriesButton() {
         let viewController = AnimationShareViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .pageSheet
@@ -128,11 +127,18 @@ class AnimationDetailViewController: UIViewController {
         }
         present(navigationController, animated: true, completion: nil)
     }
+    
+    @objc func didTappedCloseButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
+
+// MARK: - Privates
 
 extension AnimationDetailViewController {
     private func setupUI() {
-        navigationItem.rightBarButtonItems = [instaStoriesButtonItem, shareBarButtonItem]
+        navigationItem.leftBarButtonItem = closeBarButtonItem
+        navigationItem.rightBarButtonItem = shareBarButtonItem
         
         view.addSubviews([
             animationView,
