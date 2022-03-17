@@ -43,6 +43,15 @@ class AnimationDetailViewController: UIViewController {
         return link
     }()
     
+    private lazy var shareBarButtonItem: UIBarButtonItem = {
+        let view = UIBarButtonItem(
+            image: UIImage(systemName: "square.and.arrow.up.fill"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedShareButton))
+        return view
+    }()
+    
     private let viewModel: AnimationViewModel
 
     // MARK: - Inits
@@ -89,10 +98,23 @@ class AnimationDetailViewController: UIViewController {
         let currentFrame = Float(animationView.realtimeAnimationFrame)
         slider.setValue(currentFrame, animated: true)
     }
+    
+    @objc func didTappedShareButton() {
+        let text = viewModel.name
+        guard let url = viewModel.gifURL else { return }
+        
+        let activityViewController = UIActivityViewController(
+            activityItems: [text, url],
+            applicationActivities:nil)
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 extension AnimationDetailViewController {
     private func setupUI() {
+        navigationItem.rightBarButtonItem = shareBarButtonItem
+        
         view.addSubviews([
             animationView,
             playerView

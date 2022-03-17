@@ -30,6 +30,11 @@ struct AnimationViewModel {
         return URL(string: response.createdBy.avatarURL)
     }
     
+    var gifURL: URL? {
+        guard let gifURL = response.gifURL else { return nil }
+        return URL(string: gifURL)
+    }
+    
     // MARK: - Inits
 
     private let response: LottieResponse
