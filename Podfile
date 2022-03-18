@@ -6,7 +6,7 @@ target 'LottieFiles' do
   use_frameworks!
 
   pod 'LZViewPager', '~> 1.2.5'
-  pod 'lottie-ios', :git => 'https://github.com/airbnb/lottie-ios.git', :branch => 'master'
+  pod 'lottie-ios', :git => 'https://github.com/faizmokhtar/lottie-ios.git', :branch => 'master'
   pod 'SDWebImage', '~> 5.0'
 
   target 'LottieFilesTests' do
