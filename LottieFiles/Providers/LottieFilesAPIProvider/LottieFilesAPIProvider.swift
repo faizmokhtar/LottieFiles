@@ -8,20 +8,6 @@
 import Foundation
 import Combine
 
-struct AnimatorsResponse: Decodable {}
-
-protocol LottieFilesAPIProtocol {
-    func fetchFeaturedAnimations() -> AnyPublisher<FeaturedAnimationsResponse, Error>
-    
-    func fetchPopularAnimations() -> AnyPublisher<PopularAnimationsResponse, Error>
-    
-    func fetchRecentAnimations() -> AnyPublisher<RecentAnimationsResponse,  Error>
-    
-    func fetchAnimators() -> AnyPublisher<FeaturedAnimatorsResponse, Error>
-    
-    func fetchBlogs()-> AnyPublisher<BlogsResponse, Error>
-}
-
 class LottieFilesAPIProvider: LottieFilesAPIProtocol {
     
     let baseURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/lottiefiles-test.appspot.com/o/")!

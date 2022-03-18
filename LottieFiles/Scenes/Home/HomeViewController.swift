@@ -8,11 +8,6 @@
 import UIKit
 import Combine
 
-protocol SelfConfiguringCell {
-    static var reuseIdentifier: String { get }
-    func configure(with item: HomeItem)
-}
-
 class HomeViewController: UIViewController {
     
     // MARK: - Outlets
@@ -75,8 +70,12 @@ class HomeViewController: UIViewController {
         setupBindings()
         createDataSource()
         viewModel.fetchSections()
-    }
-    
+    }    
+}
+
+// MARK: - Actions
+
+extension HomeViewController {
     @objc func didPullToRefresh() {
         refreshControl.beginRefreshing()
         viewModel.fetchSections()
@@ -88,6 +87,8 @@ class HomeViewController: UIViewController {
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
 }
+
+// MARK: - UICollectionView Delegates
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -101,6 +102,8 @@ extension HomeViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
+
+// MARK: - Private Methods
 
 extension HomeViewController {
     private func setupUI() {
@@ -171,23 +174,6 @@ extension HomeViewController {
         }
         cell.configure(with: item)
         return cell
-
-    }
-    
-    private func makeCollectionViewLayout() -> UICollectionViewLayout {
-        let item = NSCollectionLayoutItem(
-            layoutSize: .init(
-                widthDimension: .fractionalWidth(0.333),
-                heightDimension: .fractionalHeight(1.0)))
-
-        let group = NSCollectionLayoutGroup.vertical(
-            layoutSize: .init(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .fractionalHeight(0.2)),
-            subitem: item,
-            count: 3)
-        let section = NSCollectionLayoutSection(group: group)
-        return UICollectionViewCompositionalLayout(section: section)
     }
     
     private func createCompositionalLayout() -> UICollectionViewLayout {
@@ -210,79 +196,5 @@ extension HomeViewController {
         config.interSectionSpacing = 20
         layout.configuration = config
         return layout
-    }
-    
-    private func makeLoginSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(1))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        let layoutGroupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .estimated(150))
-        let layoutGroup = NSCollectionLayoutGroup.vertical(
-            layoutSize: layoutGroupSize, subitems: [layoutItem])
-        let section = NSCollectionLayoutSection(group: layoutGroup)
-        return section
-    }
-    
-    private func makeFeaturedSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(400))
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 5)
-        let layoutGroupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.9),
-            heightDimension: .estimated(1))
-        let layoutGroup = NSCollectionLayoutGroup.horizontal(
-            layoutSize: layoutGroupSize, subitems: [layoutItem])
-        
-        let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.orthogonalScrollingBehavior = .continuousGroupLeadingBoundary
-        let layoutSectionHeader = makeHeaderSection()
-        section.boundarySupplementaryItems = [layoutSectionHeader]
-        return section
-    }
-    
-    private func makePeopleSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .fractionalHeight(0.33)
-        )
-        let layoutItem = NSCollectionLayoutItem(layoutSize: itemSize)
-        layoutItem.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
-        let layoutGroupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
-            heightDimension: .fractionalWidth(0.55)
-        )
-        let layoutGroup = NSCollectionLayoutGroup.vertical(
-            layoutSize: layoutGroupSize, subitems: [layoutItem])
-
-        let section = NSCollectionLayoutSection(group: layoutGroup)
-        section.orthogonalScrollingBehavior = .groupPagingCentered
-        let layoutSectionHeader = makeHeaderSection()
-        section.boundarySupplementaryItems = [layoutSectionHeader]
-        return section
-    }
-    
-    private func makeBlogSection(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        var listConfiguration = UICollectionLayoutListConfiguration(appearance: .grouped)
-        listConfiguration.showsSeparators = true
-        let list = NSCollectionLayoutSection.list(using: listConfiguration, layoutEnvironment: layoutEnvironment)
-        return list
-    }
-    
-    private func makeHeaderSection() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let layoutSectionHeaderSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.93),
-            heightDimension: .estimated(80)
-        )
-        let layoutSectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: layoutSectionHeaderSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top)
-        return layoutSectionHeader
     }
 }
