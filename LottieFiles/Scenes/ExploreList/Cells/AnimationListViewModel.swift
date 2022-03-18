@@ -15,11 +15,11 @@ class AnimationListViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     private let type: ExploreType
-    private let apiProvider: LottieFilesAPIProvider
+    private let apiProvider: LottieFilesAPIProtocol
     
     init(
         type: ExploreType,
-        apiProvider: LottieFilesAPIProvider = LottieFilesAPIProvider()
+        apiProvider: LottieFilesAPIProtocol = LottieFilesAPIProvider()
     ) {
         self.type = type
         self.apiProvider = apiProvider

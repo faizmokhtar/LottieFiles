@@ -13,6 +13,17 @@
 		4AA8A01727E43CC700098557 /* QRCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01627E43CC700098557 /* QRCameraViewController.swift */; };
 		4AA8A01A27E47D5B00098557 /* QRDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */; };
 		4AA8A01C27E47D7200098557 /* QRDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01B27E47D7200098557 /* QRDetailViewModel.swift */; };
+		4AA8A01E27E4874600098557 /* HomeViewController+Compositional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01D27E4874600098557 /* HomeViewController+Compositional.swift */; };
+		4AA8A02027E4885900098557 /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01F27E4885900098557 /* SelfConfiguringCell.swift */; };
+		4AA8A02227E4C0D300098557 /* LottieFilesAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02127E4C0D300098557 /* LottieFilesAPIProtocol.swift */; };
+		4AA8A02427E4C16600098557 /* AnimationListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02327E4C16600098557 /* AnimationListViewModelTests.swift */; };
+		4AA8A02727E4C26F00098557 /* MockLottieFilesAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02627E4C26F00098557 /* MockLottieFilesAPIProvider.swift */; };
+		4AA8A02927E4C7FE00098557 /* FeaturedAnimatorsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02827E4C7FE00098557 /* FeaturedAnimatorsResponse+Mock.swift */; };
+		4AA8A02B27E4C9D900098557 /* FeaturedAnimationsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02A27E4C9D900098557 /* FeaturedAnimationsResponse+Mock.swift */; };
+		4AA8A02D27E4CA8B00098557 /* PopularAnimationsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02C27E4CA8B00098557 /* PopularAnimationsResponse+Mock.swift */; };
+		4AA8A02F27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02E27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift */; };
+		4AA8A03127E4CBF400098557 /* BlogsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03027E4CBF400098557 /* BlogsResponse+Mock.swift */; };
+		4AA8A03527E4D0D100098557 /* AnimationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */; };
 		4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AD27D70F550066136A /* AppDelegate.swift */; };
 		4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AF27D70F550066136A /* SceneDelegate.swift */; };
 		4AABF7B727D70F590066136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AABF7B627D70F590066136A /* Assets.xcassets */; };
@@ -87,6 +98,17 @@
 		4AA8A01627E43CC700098557 /* QRCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCameraViewController.swift; sourceTree = "<group>"; };
 		4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewController.swift; sourceTree = "<group>"; };
 		4AA8A01B27E47D7200098557 /* QRDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewModel.swift; sourceTree = "<group>"; };
+		4AA8A01D27E4874600098557 /* HomeViewController+Compositional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Compositional.swift"; sourceTree = "<group>"; };
+		4AA8A01F27E4885900098557 /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		4AA8A02127E4C0D300098557 /* LottieFilesAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieFilesAPIProtocol.swift; sourceTree = "<group>"; };
+		4AA8A02327E4C16600098557 /* AnimationListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationListViewModelTests.swift; sourceTree = "<group>"; };
+		4AA8A02627E4C26F00098557 /* MockLottieFilesAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLottieFilesAPIProvider.swift; sourceTree = "<group>"; };
+		4AA8A02827E4C7FE00098557 /* FeaturedAnimatorsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeaturedAnimatorsResponse+Mock.swift"; sourceTree = "<group>"; };
+		4AA8A02A27E4C9D900098557 /* FeaturedAnimationsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeaturedAnimationsResponse+Mock.swift"; sourceTree = "<group>"; };
+		4AA8A02C27E4CA8B00098557 /* PopularAnimationsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PopularAnimationsResponse+Mock.swift"; sourceTree = "<group>"; };
+		4AA8A02E27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentAnimationsResponse+Mock.swift"; sourceTree = "<group>"; };
+		4AA8A03027E4CBF400098557 /* BlogsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlogsResponse+Mock.swift"; sourceTree = "<group>"; };
+		4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModelTests.swift; sourceTree = "<group>"; };
 		4AABF7AA27D70F550066136A /* LottieFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottieFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AABF7AD27D70F550066136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AABF7AF27D70F550066136A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +240,7 @@
 			children = (
 				4AC56F3527DB23F000404704 /* Responses */,
 				4AC56F3327DB042A00404704 /* LottieFilesAPIProvider.swift */,
+				4AA8A02127E4C0D300098557 /* LottieFilesAPIProtocol.swift */,
 			);
 			path = LottieFilesAPIProvider;
 			sourceTree = "<group>";
@@ -237,6 +260,19 @@
 				4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */,
 			);
 			path = QRDetail;
+			sourceTree = "<group>";
+		};
+		4AA8A02527E4C26000098557 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A02627E4C26F00098557 /* MockLottieFilesAPIProvider.swift */,
+				4AA8A02827E4C7FE00098557 /* FeaturedAnimatorsResponse+Mock.swift */,
+				4AA8A02A27E4C9D900098557 /* FeaturedAnimationsResponse+Mock.swift */,
+				4AA8A02C27E4CA8B00098557 /* PopularAnimationsResponse+Mock.swift */,
+				4AA8A02E27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift */,
+				4AA8A03027E4CBF400098557 /* BlogsResponse+Mock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		4AABF7A127D70F540066136A = {
@@ -280,6 +316,7 @@
 		4AABF7C327D70F5A0066136A /* LottieFilesTests */ = {
 			isa = PBXGroup;
 			children = (
+				4AA8A02527E4C26000098557 /* Mocks */,
 				4AABF7C427D70F5A0066136A /* LottieFilesTests.swift */,
 			);
 			path = LottieFilesTests;
@@ -300,7 +337,9 @@
 				4AC56F1327D8868400404704 /* Cells */,
 				4AC56F0727D8697400404704 /* HomeViewModel.swift */,
 				4AC56F0527D8690C00404704 /* HomeViewController.swift */,
+				4AA8A01D27E4874600098557 /* HomeViewController+Compositional.swift */,
 				4AC56F6A27E075DA00404704 /* Section.swift */,
+				4AA8A01F27E4885900098557 /* SelfConfiguringCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -379,7 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				4AC56F2D27D9FFDD00404704 /* Cells */,
-				4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */,
+				4AA8A02327E4C16600098557 /* AnimationListViewModelTests.swift */,
 				4AC56F2927D9F1A400404704 /* AnimationListViewController.swift */,
 			);
 			path = ExploreList;
@@ -389,6 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				4AC56F3027DA143000404704 /* AnimationViewModel.swift */,
+				4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */,
+				4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */,
 				4AC56F2E27DA005D00404704 /* AnimationCell.swift */,
 			);
 			path = Cells;
@@ -767,6 +808,7 @@
 				4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */,
 				4AC56F0827D8697400404704 /* HomeViewModel.swift in Sources */,
 				4AC56F2F27DA005D00404704 /* AnimationCell.swift in Sources */,
+				4AA8A02027E4885900098557 /* SelfConfiguringCell.swift in Sources */,
 				4AC56F5E27DEE87D00404704 /* UIColor+Extensions.swift in Sources */,
 				4AC56F1527D886AB00404704 /* HomeLoginCell.swift in Sources */,
 				4AC56F1227D86A5500404704 /* ProfileViewController.swift in Sources */,
@@ -781,6 +823,7 @@
 				4AC56F1F27D8B27200404704 /* HomeBlogCell.swift in Sources */,
 				4AC56F6B27E075DA00404704 /* Section.swift in Sources */,
 				4AC56F3D27DB2E2D00404704 /* DataResponse.swift in Sources */,
+				4AA8A01E27E4874600098557 /* HomeViewController+Compositional.swift in Sources */,
 				4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */,
 				4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */,
 				4AC56F1027D86A4400404704 /* ProfileViewModel.swift in Sources */,
@@ -789,6 +832,7 @@
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
 				4AA8A01C27E47D7200098557 /* QRDetailViewModel.swift in Sources */,
 				4AC56F2A27D9F1A400404704 /* AnimationListViewController.swift in Sources */,
+				4AA8A02227E4C0D300098557 /* LottieFilesAPIProtocol.swift in Sources */,
 				4AA8A01227E3282E00098557 /* ShareButton.swift in Sources */,
 				4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */,
 				4AC56F2C27D9F1E600404704 /* AnimationListViewModel.swift in Sources */,
@@ -807,12 +851,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AC56F5427DB57FF00404704 /* BlogsResponseTests.swift in Sources */,
+				4AA8A02727E4C26F00098557 /* MockLottieFilesAPIProvider.swift in Sources */,
 				4AC56F4A27DB3A3500404704 /* RecentAnimationsResponseTests.swift in Sources */,
 				4AABF7C527D70F5A0066136A /* LottieFilesTests.swift in Sources */,
 				4AC56F3927DB24B500404704 /* FeaturedAnimationsResponseTests.swift in Sources */,
+				4AA8A02D27E4CA8B00098557 /* PopularAnimationsResponse+Mock.swift in Sources */,
+				4AA8A03127E4CBF400098557 /* BlogsResponse+Mock.swift in Sources */,
+				4AA8A02927E4C7FE00098557 /* FeaturedAnimatorsResponse+Mock.swift in Sources */,
 				4AC56F5627DB5F0E00404704 /* LottieResponseTests.swift in Sources */,
+				4AA8A02B27E4C9D900098557 /* FeaturedAnimationsResponse+Mock.swift in Sources */,
+				4AA8A02427E4C16600098557 /* AnimationListViewModelTests.swift in Sources */,
+				4AA8A02F27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift in Sources */,
 				4AC56F4F27DB4F0800404704 /* FeaturedAnimatorsResponseTests.swift in Sources */,
 				4AC56F4527DB313600404704 /* PopularAnimationsResponseTests.swift in Sources */,
+				4AA8A03527E4D0D100098557 /* AnimationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
