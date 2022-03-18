@@ -40,6 +40,15 @@ class HomeViewController: UIViewController {
         view.delegate = self
         return view
     }()
+    
+    private lazy var scanQRBarButtonItem: UIBarButtonItem = {
+        let view = UIBarButtonItem(
+            image: UIImage(systemName: "qrcode.viewfinder"),
+            style: .plain,
+            target: self,
+            action: #selector(didTappedScanQRButton))
+        return view
+    }()
         
     var dataSource: UICollectionViewDiffableDataSource<Section, HomeItem>?
     
@@ -72,6 +81,12 @@ class HomeViewController: UIViewController {
         refreshControl.beginRefreshing()
         viewModel.fetchSections()
     }
+    
+    @objc func didTappedScanQRButton() {
+        let viewController = QRCameraViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -89,6 +104,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController {
     private func setupUI() {
+        navigationItem.rightBarButtonItem = scanQRBarButtonItem
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([

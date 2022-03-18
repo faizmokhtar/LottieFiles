@@ -10,6 +10,9 @@
 		4A31C90627D784DE00450865 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A31C90527D784DE00450865 /* TabBarViewController.swift */; };
 		4AA8A01027E3090700098557 /* AnimationShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A00F27E3090700098557 /* AnimationShareViewController.swift */; };
 		4AA8A01227E3282E00098557 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01127E3282E00098557 /* ShareButton.swift */; };
+		4AA8A01727E43CC700098557 /* QRCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01627E43CC700098557 /* QRCameraViewController.swift */; };
+		4AA8A01A27E47D5B00098557 /* QRDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */; };
+		4AA8A01C27E47D7200098557 /* QRDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A01B27E47D7200098557 /* QRDetailViewModel.swift */; };
 		4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AD27D70F550066136A /* AppDelegate.swift */; };
 		4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AF27D70F550066136A /* SceneDelegate.swift */; };
 		4AABF7B727D70F590066136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AABF7B627D70F590066136A /* Assets.xcassets */; };
@@ -81,6 +84,9 @@
 		4A31C90527D784DE00450865 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4AA8A00F27E3090700098557 /* AnimationShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationShareViewController.swift; sourceTree = "<group>"; };
 		4AA8A01127E3282E00098557 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		4AA8A01627E43CC700098557 /* QRCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCameraViewController.swift; sourceTree = "<group>"; };
+		4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewController.swift; sourceTree = "<group>"; };
+		4AA8A01B27E47D7200098557 /* QRDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDetailViewModel.swift; sourceTree = "<group>"; };
 		4AABF7AA27D70F550066136A /* LottieFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottieFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AABF7AD27D70F550066136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AABF7AF27D70F550066136A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				4AC56F6327DF42D000404704 /* AnimationDetail */,
 				4AA8A00C27E308CE00098557 /* AnimationShare */,
 				4AC56F0E27D86A3100404704 /* Profile */,
+				4AA8A01527E43CA600098557 /* QRCamera */,
+				4AA8A01827E47D3C00098557 /* QRDetail */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -203,6 +211,32 @@
 				4AA8A01127E3282E00098557 /* ShareButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4AA8A01427E41E3D00098557 /* LottieFilesAPIProvider */ = {
+			isa = PBXGroup;
+			children = (
+				4AC56F3527DB23F000404704 /* Responses */,
+				4AC56F3327DB042A00404704 /* LottieFilesAPIProvider.swift */,
+			);
+			path = LottieFilesAPIProvider;
+			sourceTree = "<group>";
+		};
+		4AA8A01527E43CA600098557 /* QRCamera */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A01627E43CC700098557 /* QRCameraViewController.swift */,
+			);
+			path = QRCamera;
+			sourceTree = "<group>";
+		};
+		4AA8A01827E47D3C00098557 /* QRDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A01B27E47D7200098557 /* QRDetailViewModel.swift */,
+				4AA8A01927E47D5B00098557 /* QRDetailViewController.swift */,
+			);
+			path = QRDetail;
 			sourceTree = "<group>";
 		};
 		4AABF7A127D70F540066136A = {
@@ -363,8 +397,7 @@
 		4AC56F3227DB03E300404704 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
-				4AC56F3527DB23F000404704 /* Responses */,
-				4AC56F3327DB042A00404704 /* LottieFilesAPIProvider.swift */,
+				4AA8A01427E41E3D00098557 /* LottieFilesAPIProvider */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -741,6 +774,7 @@
 				4AC56F4327DB2FAB00404704 /* PopularAnimationsResponse.swift in Sources */,
 				4AC56F3F27DB2E4900404704 /* LottieResponse.swift in Sources */,
 				4AA8A01027E3090700098557 /* AnimationShareViewController.swift in Sources */,
+				4AA8A01A27E47D5B00098557 /* QRDetailViewController.swift in Sources */,
 				4AC56F6027DF025E00404704 /* UIView+Extensions.swift in Sources */,
 				4AC56F3427DB042A00404704 /* LottieFilesAPIProvider.swift in Sources */,
 				4AC56F1C27D8A84C00404704 /* HomePeopleCell.swift in Sources */,
@@ -753,6 +787,7 @@
 				4AC56F0D27D86A0000404704 /* ExploreViewModel.swift in Sources */,
 				4AC56F1927D89EC500404704 /* HomeFeaturedCell.swift in Sources */,
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
+				4AA8A01C27E47D7200098557 /* QRDetailViewModel.swift in Sources */,
 				4AC56F2A27D9F1A400404704 /* AnimationListViewController.swift in Sources */,
 				4AA8A01227E3282E00098557 /* ShareButton.swift in Sources */,
 				4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */,
@@ -761,6 +796,7 @@
 				4AC56F4827DB339600404704 /* RecentAnimationsResponse.swift in Sources */,
 				4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */,
 				4AC56F3727DB240C00404704 /* FeaturedAnimationsResponse.swift in Sources */,
+				4AA8A01727E43CC700098557 /* QRCameraViewController.swift in Sources */,
 				4AC56F5227DB503F00404704 /* BlogsResponse.swift in Sources */,
 				4AC56F2227D8DEEF00404704 /* HomeSectionHeader.swift in Sources */,
 			);
