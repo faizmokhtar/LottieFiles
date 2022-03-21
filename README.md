@@ -29,7 +29,16 @@ You can run the project on the latest Xcode13 and above.
 
 ## Folder Structures
 
-
+- `Scenes/`
+  - Contains all the view controllers and view models that are related to the controller
+- `Views/`
+  - Contains shared views.
+- `Providers/`
+  - Contains API calls
+- `Managers/`
+  - `UserManager`: Handle user state management
+- `Extensions/`
+  - For extensions related files
 
 ## Tests
 
