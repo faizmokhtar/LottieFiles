@@ -32,6 +32,8 @@
 		4AA8A04527E835A900098557 /* UserLoginPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04427E835A900098557 /* UserLoginPayload.swift */; };
 		4AA8A04727E8392300098557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04627E8392300098557 /* User.swift */; };
 		4AA8A04A27E8519500098557 /* UserAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04927E8519500098557 /* UserAPIProtocol.swift */; };
+		4AA8A04C27E85A2300098557 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04B27E85A2300098557 /* HomeItem.swift */; };
+		4AA8A05027E85C3B00098557 /* DateFormatter+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04F27E85C3A00098557 /* DateFormatter+ExtensionsTests.swift */; };
 		4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AD27D70F550066136A /* AppDelegate.swift */; };
 		4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AF27D70F550066136A /* SceneDelegate.swift */; };
 		4AABF7B727D70F590066136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AABF7B627D70F590066136A /* Assets.xcassets */; };
@@ -125,6 +127,8 @@
 		4AA8A04427E835A900098557 /* UserLoginPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginPayload.swift; sourceTree = "<group>"; };
 		4AA8A04627E8392300098557 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4AA8A04927E8519500098557 /* UserAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIProtocol.swift; sourceTree = "<group>"; };
+		4AA8A04B27E85A2300098557 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
+		4AA8A04F27E85C3A00098557 /* DateFormatter+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		4AABF7AA27D70F550066136A /* LottieFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottieFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AABF7AD27D70F550066136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AABF7AF27D70F550066136A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -336,6 +340,24 @@
 			path = UserManager;
 			sourceTree = "<group>";
 		};
+		4AA8A04D27E85A9700098557 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AC56F6A27E075DA00404704 /* Section.swift */,
+				4AA8A04B27E85A2300098557 /* HomeItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4AA8A04E27E85C2000098557 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				4AC56F5827DC3F4E00404704 /* DateFormatter+Extensions.swift */,
+				4AA8A04F27E85C3A00098557 /* DateFormatter+ExtensionsTests.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
 		4AABF7A127D70F540066136A = {
 			isa = PBXGroup;
 			children = (
@@ -397,10 +419,10 @@
 			isa = PBXGroup;
 			children = (
 				4AC56F1327D8868400404704 /* Cells */,
+				4AA8A04D27E85A9700098557 /* Models */,
 				4AC56F0727D8697400404704 /* HomeViewModel.swift */,
 				4AC56F0527D8690C00404704 /* HomeViewController.swift */,
 				4AA8A01D27E4874600098557 /* HomeViewController+Compositional.swift */,
-				4AC56F6A27E075DA00404704 /* Section.swift */,
 				4AA8A01F27E4885900098557 /* SelfConfiguringCell.swift */,
 			);
 			path = Home;
@@ -585,7 +607,7 @@
 		4AC56F5727DC3F2500404704 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4AC56F5827DC3F4E00404704 /* DateFormatter+Extensions.swift */,
+				4AA8A04E27E85C2000098557 /* DateFormatter */,
 				4AC56F5A27DCFFD700404704 /* URL+Extensions.swift */,
 				4AC56F5D27DEE87C00404704 /* UIColor+Extensions.swift */,
 				4AC56F6127DF075600404704 /* UIColor+Palette.swift */,
@@ -896,6 +918,7 @@
 				4AC56F1027D86A4400404704 /* ProfileViewModel.swift in Sources */,
 				4AA8A04A27E8519500098557 /* UserAPIProtocol.swift in Sources */,
 				4AA8A04027E8350600098557 /* UserLoginResponse.swift in Sources */,
+				4AA8A04C27E85A2300098557 /* HomeItem.swift in Sources */,
 				4AC56F0D27D86A0000404704 /* ExploreViewModel.swift in Sources */,
 				4AC56F1927D89EC500404704 /* HomeFeaturedCell.swift in Sources */,
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
@@ -936,6 +959,7 @@
 				4AA8A02F27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift in Sources */,
 				4AC56F4F27DB4F0800404704 /* FeaturedAnimatorsResponseTests.swift in Sources */,
 				4AC56F4527DB313600404704 /* PopularAnimationsResponseTests.swift in Sources */,
+				4AA8A05027E85C3B00098557 /* DateFormatter+ExtensionsTests.swift in Sources */,
 				4AA8A03527E4D0D100098557 /* AnimationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

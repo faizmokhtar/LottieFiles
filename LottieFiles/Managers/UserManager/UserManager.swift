@@ -38,7 +38,8 @@ class UserManager {
     
     func logout() {
         apiProvider.fetchLogout()
-            .sink { _ in
+            .sink { [weak self] _ in
+                self?.user = nil
                 UserDefaults.standard.isUserLoggedIn = false
             }
             .store(in: &cancellables)

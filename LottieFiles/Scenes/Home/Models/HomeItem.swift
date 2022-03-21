@@ -1,31 +1,17 @@
 //
-//  Section.swift
+//  HomeItem.swift
 //  LottieFiles
 //
-//  Created by AD0502-ADE-MB-1 on 15/03/2022.
+//  Created by AD0502-ADE-MB-1 on 21/03/2022.
 //
 
 import Foundation
 import UIKit
 
-enum SectionType: Hashable {
-    case login
-    case featured
-    case people
-    case blog
-}
-
-struct Section: Identifiable, Hashable {
-    let id: UUID = UUID()
-    let title: String
-    let type: SectionType
-    let items: [HomeItem]
-}
-
 struct HomeItem: Equatable {
     
     let id = UUID()
-
+    
     var animationURL: URL? {
         guard let lottieURL = response?.lottieURL else { return nil }
         return URL(string: lottieURL)
@@ -61,12 +47,21 @@ struct HomeItem: Equatable {
         guard let url = blogResponse?.imageURL else { return nil }
         return URL(string: url)
     }
-
+    
+    var loggedInUsername: String? {
+        return user?.firstName
+    }
+    
+    var loginDate: String? {
+        return DateFormatter.simple.string(from: Date())
+    }
+    
     // MARK: - Inits
-
+    
     private(set) var response: LottieResponse?
     private var animatorResponse: AnimatorResponse?
     private var blogResponse: Blog?
+    private var user: User?
     
     init(response: LottieResponse) {
         self.response = response
@@ -78,6 +73,10 @@ struct HomeItem: Equatable {
     
     init(blogResponse: Blog) {
         self.blogResponse = blogResponse
+    }
+    
+    init(user: User?) {
+        self.user = user
     }
 }
 

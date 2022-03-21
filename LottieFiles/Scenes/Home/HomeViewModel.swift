@@ -14,18 +14,25 @@ class HomeViewModel {
     
     private var cancellables = Set<AnyCancellable>()
     
+    // MARK: - Inits
+
     let apiProvider: LottieFilesAPIProvider
+    let userManager: UserManager
     
     init(
-        apiProvider: LottieFilesAPIProvider = LottieFilesAPIProvider()
+        apiProvider: LottieFilesAPIProvider = LottieFilesAPIProvider(),
+        userManager: UserManager = UserManager.shared
     ) {
         self.apiProvider = apiProvider
+        self.userManager = userManager
+        setupBindings()
     }
 }
 
 extension HomeViewModel {
     func fetchSections() {
-        Publishers.Zip3(
+        Publishers.Zip4(
+            fetchLoginHeader(),
             fetchFeatured(),
             fetchAnimators(),
             fetchBlogs()
@@ -33,8 +40,8 @@ extension HomeViewModel {
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 print(completion)
-            }, receiveValue: { [weak self] featuredSection, featuredPeople, featureBlogs in
-                self?.sections = [featuredSection, featuredPeople, featureBlogs]
+            }, receiveValue: { [weak self] featuredHeader, featuredSection, featuredPeople, featureBlogs in
+                self?.sections = [featuredHeader, featuredSection, featuredPeople, featureBlogs]
             })
             .store(in: &cancellables)
             
@@ -42,6 +49,13 @@ extension HomeViewModel {
 }
 
 extension HomeViewModel {
+    private func setupBindings() {
+        userManager.isUserLoggedIn
+            .sink { [weak self] _ in
+                self?.fetchSections()
+            }.store(in: &cancellables)
+    }
+    
     private func fetchAnimators() -> AnyPublisher<Section, Error> {
         return apiProvider.fetchAnimators()
             .map { $0.data }
@@ -71,5 +85,14 @@ extension HomeViewModel {
             .map { response in
                 Section(title: "Latest Stories", type: .blog, items: response)
             }.eraseToAnyPublisher()
+    }
+    
+    // TODO: Ideally this data should be return from the API to
+    private func fetchLoginHeader() -> AnyPublisher<Section, Error> {
+        let item = HomeItem(user: userManager.user)
+        let section = Section(title: "", type: .login, items: [item])
+        return Just(section)
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
 }

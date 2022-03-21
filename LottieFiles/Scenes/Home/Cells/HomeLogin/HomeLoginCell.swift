@@ -47,7 +47,14 @@ extension HomeLoginCell: SelfConfiguringCell {
     }
     
     func configure(with item: HomeItem) {
-        
+        dateLabel.text = item.loginDate
+        if let name = item.loggedInUsername {
+            helloLabel.text = "Hello \(name.capitalized)"
+            loginLabel.isHidden = true
+        } else {
+            helloLabel.text = "Hello stranger"
+            loginLabel.isHidden = false
+        }
     }
 }
 
