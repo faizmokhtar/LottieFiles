@@ -11,13 +11,21 @@ import Combine
 class ProfileViewController: UIViewController {
     
     // MARK: - Outlets
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .App.primary
         view.layer.cornerRadius = 15
         view.layer.cornerCurve = .continuous
         view.addTarget(self, action: #selector(didTappedLoginButton), for: .touchUpInside)
+        return view
+    }()
+    
+    private lazy var loadingIndicator: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.color = .white
+        view.hidesWhenStopped = true
         return view
     }()
     
@@ -62,12 +70,16 @@ extension ProfileViewController {
 extension ProfileViewController {
     private func setupUI() {
         view.addSubview(loginButton)
+        loginButton.addSubview(loadingIndicator)
         
         NSLayoutConstraint.activate([
             loginButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            loginButton.heightAnchor.constraint(equalToConstant: 44)
+            loginButton.heightAnchor.constraint(equalToConstant: 44),
+            
+            loadingIndicator.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor)
         ])
     }
     
@@ -81,6 +93,20 @@ extension ProfileViewController {
         
         viewModel.isUserLoggedIn
             .assign(to: \.isLoggedIn, on: self)
+            .store(in: &cancellables)
+        
+        viewModel.$isLoading
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.loginButton.isUserInteractionEnabled = false
+                    self?.loginButton.titleLabel?.layer.opacity = 0
+                    self?.loadingIndicator.startAnimating()
+                } else {
+                    self?.loginButton.isUserInteractionEnabled = true
+                    self?.loginButton.titleLabel?.layer.opacity = 1
+                    self?.loadingIndicator.stopAnimating()
+                }
+            }
             .store(in: &cancellables)
     }
 }

@@ -49,12 +49,13 @@ class TabBarViewController: UITabBarController {
         exploreRootViewController.tabBarItem = exploreTabBarItem
         
         let profileViewController = ProfileViewController()
-        profileViewController.tabBarItem = profileTabBarItem
+        let profileRootViewController = UINavigationController(rootViewController: profileViewController)
+        profileRootViewController.tabBarItem = profileTabBarItem
         
         setViewControllers([
             homeRootViewController,
             exploreRootViewController,
-            profileViewController
+            profileRootViewController
         ], animated: true)
     }
 }

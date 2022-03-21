@@ -49,7 +49,7 @@ class AnimationCell: UITableViewCell {
     lazy var loadingIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.tintColor = .App.primary
+        view.color = .App.primary
         view.hidesWhenStopped = true
         return view
     }()
