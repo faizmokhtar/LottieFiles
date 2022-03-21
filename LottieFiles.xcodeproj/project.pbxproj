@@ -24,6 +24,14 @@
 		4AA8A02F27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A02E27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift */; };
 		4AA8A03127E4CBF400098557 /* BlogsResponse+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03027E4CBF400098557 /* BlogsResponse+Mock.swift */; };
 		4AA8A03527E4D0D100098557 /* AnimationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */; };
+		4AA8A03827E80DDF00098557 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03727E80DDF00098557 /* UserManager.swift */; };
+		4AA8A03A27E8144A00098557 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03927E8144A00098557 /* UserDefaults+Extensions.swift */; };
+		4AA8A03D27E8349700098557 /* UserAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03C27E8349700098557 /* UserAPIProvider.swift */; };
+		4AA8A04027E8350600098557 /* UserLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A03F27E8350600098557 /* UserLoginResponse.swift */; };
+		4AA8A04227E8351400098557 /* UserLogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04127E8351400098557 /* UserLogoutResponse.swift */; };
+		4AA8A04527E835A900098557 /* UserLoginPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04427E835A900098557 /* UserLoginPayload.swift */; };
+		4AA8A04727E8392300098557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04627E8392300098557 /* User.swift */; };
+		4AA8A04A27E8519500098557 /* UserAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8A04927E8519500098557 /* UserAPIProtocol.swift */; };
 		4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AD27D70F550066136A /* AppDelegate.swift */; };
 		4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABF7AF27D70F550066136A /* SceneDelegate.swift */; };
 		4AABF7B727D70F590066136A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AABF7B627D70F590066136A /* Assets.xcassets */; };
@@ -109,6 +117,14 @@
 		4AA8A02E27E4CB5200098557 /* RecentAnimationsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecentAnimationsResponse+Mock.swift"; sourceTree = "<group>"; };
 		4AA8A03027E4CBF400098557 /* BlogsResponse+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlogsResponse+Mock.swift"; sourceTree = "<group>"; };
 		4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModelTests.swift; sourceTree = "<group>"; };
+		4AA8A03727E80DDF00098557 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		4AA8A03927E8144A00098557 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		4AA8A03C27E8349700098557 /* UserAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIProvider.swift; sourceTree = "<group>"; };
+		4AA8A03F27E8350600098557 /* UserLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginResponse.swift; sourceTree = "<group>"; };
+		4AA8A04127E8351400098557 /* UserLogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogoutResponse.swift; sourceTree = "<group>"; };
+		4AA8A04427E835A900098557 /* UserLoginPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginPayload.swift; sourceTree = "<group>"; };
+		4AA8A04627E8392300098557 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4AA8A04927E8519500098557 /* UserAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIProtocol.swift; sourceTree = "<group>"; };
 		4AABF7AA27D70F550066136A /* LottieFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LottieFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AABF7AD27D70F550066136A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AABF7AF27D70F550066136A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +291,51 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		4AA8A03627E80DD100098557 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A04827E8393E00098557 /* UserManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		4AA8A03B27E8348800098557 /* UserAPIProvider */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A04327E8352A00098557 /* Payload */,
+				4AA8A03E27E834F400098557 /* Responses */,
+				4AA8A03C27E8349700098557 /* UserAPIProvider.swift */,
+				4AA8A04927E8519500098557 /* UserAPIProtocol.swift */,
+			);
+			path = UserAPIProvider;
+			sourceTree = "<group>";
+		};
+		4AA8A03E27E834F400098557 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A03F27E8350600098557 /* UserLoginResponse.swift */,
+				4AA8A04127E8351400098557 /* UserLogoutResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		4AA8A04327E8352A00098557 /* Payload */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A04427E835A900098557 /* UserLoginPayload.swift */,
+			);
+			path = Payload;
+			sourceTree = "<group>";
+		};
+		4AA8A04827E8393E00098557 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				4AA8A03727E80DDF00098557 /* UserManager.swift */,
+				4AA8A04627E8392300098557 /* User.swift */,
+			);
+			path = UserManager;
+			sourceTree = "<group>";
+		};
 		4AABF7A127D70F540066136A = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +364,7 @@
 				4A31C90327D7840100450865 /* Scenes */,
 				4AA8A01327E3370100098557 /* Views */,
 				4AC56F3227DB03E300404704 /* Providers */,
+				4AA8A03627E80DD100098557 /* Managers */,
 				4AC56F5727DC3F2500404704 /* Extensions */,
 				4AABF7AD27D70F550066136A /* AppDelegate.swift */,
 				4AABF7AF27D70F550066136A /* SceneDelegate.swift */,
@@ -438,6 +500,7 @@
 		4AC56F3227DB03E300404704 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				4AA8A03B27E8348800098557 /* UserAPIProvider */,
 				4AA8A01427E41E3D00098557 /* LottieFilesAPIProvider */,
 			);
 			path = Providers;
@@ -528,6 +591,7 @@
 				4AC56F6127DF075600404704 /* UIColor+Palette.swift */,
 				4AC56F5F27DF025E00404704 /* UIView+Extensions.swift */,
 				4AC56F6827DF841D00404704 /* AnimationView+Extensions.swift */,
+				4AA8A03927E8144A00098557 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -804,6 +868,7 @@
 				4AC56F3127DA143000404704 /* AnimationViewModel.swift in Sources */,
 				4AC56F5B27DCFFD700404704 /* URL+Extensions.swift in Sources */,
 				4AC56F4D27DB3CB300404704 /* FeaturedAnimatorsResponse.swift in Sources */,
+				4AA8A04527E835A900098557 /* UserLoginPayload.swift in Sources */,
 				4AC56F0627D8690C00404704 /* HomeViewController.swift in Sources */,
 				4AC56F6727DF430700404704 /* AnimationDetailViewController.swift in Sources */,
 				4AC56F0827D8697400404704 /* HomeViewModel.swift in Sources */,
@@ -817,25 +882,32 @@
 				4AC56F3F27DB2E4900404704 /* LottieResponse.swift in Sources */,
 				4AA8A01027E3090700098557 /* AnimationShareViewController.swift in Sources */,
 				4AA8A01A27E47D5B00098557 /* QRDetailViewController.swift in Sources */,
+				4AA8A04227E8351400098557 /* UserLogoutResponse.swift in Sources */,
 				4AC56F6027DF025E00404704 /* UIView+Extensions.swift in Sources */,
 				4AC56F3427DB042A00404704 /* LottieFilesAPIProvider.swift in Sources */,
 				4AC56F1C27D8A84C00404704 /* HomePeopleCell.swift in Sources */,
 				4AC56F1F27D8B27200404704 /* HomeBlogCell.swift in Sources */,
 				4AC56F6B27E075DA00404704 /* Section.swift in Sources */,
+				4AA8A03D27E8349700098557 /* UserAPIProvider.swift in Sources */,
 				4AC56F3D27DB2E2D00404704 /* DataResponse.swift in Sources */,
 				4AA8A01E27E4874600098557 /* HomeViewController+Compositional.swift in Sources */,
 				4AC56F6227DF075600404704 /* UIColor+Palette.swift in Sources */,
 				4AC56F6927DF841D00404704 /* AnimationView+Extensions.swift in Sources */,
 				4AC56F1027D86A4400404704 /* ProfileViewModel.swift in Sources */,
+				4AA8A04A27E8519500098557 /* UserAPIProtocol.swift in Sources */,
+				4AA8A04027E8350600098557 /* UserLoginResponse.swift in Sources */,
 				4AC56F0D27D86A0000404704 /* ExploreViewModel.swift in Sources */,
 				4AC56F1927D89EC500404704 /* HomeFeaturedCell.swift in Sources */,
 				4AC56F5927DC3F4E00404704 /* DateFormatter+Extensions.swift in Sources */,
+				4AA8A03827E80DDF00098557 /* UserManager.swift in Sources */,
+				4AA8A03A27E8144A00098557 /* UserDefaults+Extensions.swift in Sources */,
 				4AA8A01C27E47D7200098557 /* QRDetailViewModel.swift in Sources */,
 				4AC56F2A27D9F1A400404704 /* AnimationListViewController.swift in Sources */,
 				4AA8A02227E4C0D300098557 /* LottieFilesAPIProtocol.swift in Sources */,
 				4AA8A01227E3282E00098557 /* ShareButton.swift in Sources */,
 				4AABF7AE27D70F550066136A /* AppDelegate.swift in Sources */,
 				4AC56F2C27D9F1E600404704 /* AnimationListViewModel.swift in Sources */,
+				4AA8A04727E8392300098557 /* User.swift in Sources */,
 				4AC56F0B27D869DA00404704 /* ExploreViewController.swift in Sources */,
 				4AC56F4827DB339600404704 /* RecentAnimationsResponse.swift in Sources */,
 				4AABF7B027D70F550066136A /* SceneDelegate.swift in Sources */,

@@ -21,7 +21,7 @@ class AnimationCell: UITableViewCell {
     lazy var avatarImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
+        view.backgroundColor = .App.secondary
         view.layer.cornerRadius = 20
         view.clipsToBounds = true
         return view

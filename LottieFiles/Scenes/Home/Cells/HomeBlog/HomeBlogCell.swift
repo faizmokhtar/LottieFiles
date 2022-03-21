@@ -11,7 +11,7 @@ import SDWebImage
 class HomeBlogCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .red
+        view.backgroundColor = .App.secondary
         view.clipsToBounds = true
         view.layer.cornerCurve = .continuous
         view.layer.cornerRadius = 10

@@ -6,5 +6,31 @@
 //
 
 import Foundation
+import Combine
 
-class ProfileViewModel {}
+class ProfileViewModel {
+    
+    var isUserLoggedIn: AnyPublisher<Bool, Never> {
+        return userManager.isUserLoggedIn
+    }
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Inits
+
+    private let userManager: UserManager
+    
+    init(userManager: UserManager = UserManager.shared) {
+        self.userManager = userManager
+    }
+}
+
+extension ProfileViewModel {
+    func logout() {
+        userManager.logout()
+    }
+    
+    func login(email: String, password: String) {
+        userManager.loginUser(email: email, password: password)
+    }
+}
