@@ -8,24 +8,27 @@
 import UIKit
 
 class HomeLoginCell: UICollectionViewCell {
-    private let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Wednesday, March 9"
+        view.font = .systemFont(ofSize: 14)
+        view.textColor = .secondaryLabel
         return view
     }()
     
-    private let helloLabel: UILabel = {
+    private lazy var helloLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Hello Stranger"
+        view.font = .systemFont(ofSize: 20, weight: .medium)
         return view
     }()
     
-    private let loginLabel: UILabel = {
+    private lazy var loginLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Login / Create Account"
+        view.font = .systemFont(ofSize: 14)
+        view.textColor = .secondaryLabel
         return view
     }()
     
@@ -52,7 +55,7 @@ extension HomeLoginCell: SelfConfiguringCell {
             helloLabel.text = "Hello \(name.capitalized)"
             loginLabel.isHidden = true
         } else {
-            helloLabel.text = "Hello stranger"
+            helloLabel.text = "Hello Stranger"
             loginLabel.isHidden = false
         }
     }
