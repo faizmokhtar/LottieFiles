@@ -8,13 +8,17 @@ This app allows users too:
 - Scan QR code on [lottiefiles.com](https://lottiefiles.com/) and preview it on your device
 - Share animations on Instagram stories and others
 
+| Videos  |   |
+|---|---|
+| ![Home](assets/home.gif?raw=true "Title")  | Home page |
+| ![Explore](assets/explore-lottie.gif?raw=true)  | Explore with recent, featured and popular animations  |
+| ![Login](assets/mock-login.gif?raw=true) | Mock auth state |
+| ![Share](assets/share-animation.gif?raw=true) | Share to Instagram stories and others |
+| ![Scan](assets/scan-qr-lottie.gif?raw=true) | Scan QR in lottiefiles.com |
+
 ## Installation
 
 You can run the project on the latest Xcode13 and above.
-
-## Installation
-
-This project uses Cocoapods. To run the installation, `cd` into the project root folder and run
 
 ## Architecture
 
