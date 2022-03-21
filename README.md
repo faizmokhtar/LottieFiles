@@ -10,7 +10,7 @@ This app allows users too:
 
 | Videos  |   |
 |---|---|
-| ![Home](assets/home.gif?raw=true "Title")  | Home page |
+| ![Home](assets/home.gif?raw=true)  | Home page |
 | ![Explore](assets/explore-lottie.gif?raw=true)  | Explore with recent, featured and popular animations  |
 | ![Login](assets/mock-login.gif?raw=true) | Mock auth state |
 | ![Share](assets/share-animation.gif?raw=true) | Share to Instagram stories and others |
