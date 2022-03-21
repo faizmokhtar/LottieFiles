@@ -51,6 +51,12 @@ You can run the project on the latest Xcode13 and above.
 - There was some crash cause by assertion check on `lottie-ios` library. I had to fork the library and remove it myself. 
 The assertion should probably be replace with warnings instead
 
+# Some learnings
+
+- Learned how to configure Lottie
+- Learned how to use Combine in UIKit
+- Learned how to use `UICollectionView` diffable data sources
+
 # What could have been better
 - Ideally the API in the `HomeViewModel` should have been a single API instead of three different API calls. 
 This is so that the client don't have to transform the API responses so much. This would help with feature parity between platforms.
