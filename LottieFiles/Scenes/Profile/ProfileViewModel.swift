@@ -13,7 +13,7 @@ class ProfileViewModel {
     var isUserLoggedIn: AnyPublisher<Bool, Never> {
         return userManager.isUserLoggedIn
     }
-    
+        
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Inits

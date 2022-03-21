@@ -481,6 +481,7 @@
 			children = (
 				4AC56F2D27D9FFDD00404704 /* Cells */,
 				4AA8A02327E4C16600098557 /* AnimationListViewModelTests.swift */,
+				4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */,
 				4AC56F2927D9F1A400404704 /* AnimationListViewController.swift */,
 			);
 			path = ExploreList;
@@ -491,7 +492,6 @@
 			children = (
 				4AC56F3027DA143000404704 /* AnimationViewModel.swift */,
 				4AA8A03427E4D0D100098557 /* AnimationViewModelTests.swift */,
-				4AC56F2B27D9F1E600404704 /* AnimationListViewModel.swift */,
 				4AC56F2E27DA005D00404704 /* AnimationCell.swift */,
 			);
 			path = Cells;

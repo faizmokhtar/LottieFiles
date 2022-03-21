@@ -13,7 +13,9 @@ import Combine
 class UserAPIProvider: UserAPIProviderProtocol {
     func fetchUserLogin(user: UserLoginPayload) -> AnyPublisher<UserLoginResponse, Never> {
         return Future { promise in
+            print("logging in...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                print("you're logged in...")
                 let response = UserLoginResponse(firstName: "Faiz", lastName: "Mokhtar", email: "mfmokhtar@gmail.com", provider: "google")
                 return promise(.success(response))
             }
@@ -22,7 +24,9 @@ class UserAPIProvider: UserAPIProviderProtocol {
     
     func fetchLogout() -> AnyPublisher<UserLogoutResponse, Never> {
         return Future { promise in
+            print("logging out...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                print("logged out.")
                 let response = UserLogoutResponse()
                 return promise(.success(response))
             }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol UserAPIProviderProtocol {
     func fetchUserLogin(user: UserLoginPayload) -> AnyPublisher<UserLoginResponse, Never>
