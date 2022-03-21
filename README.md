@@ -47,7 +47,7 @@ You can run the project on the latest Xcode13 and above.
 
 # Some issues
 
-- Tried using SwiftUI for developing the app at first but it seems like the Lottie support is not good enough yet? Very bad stutterings.
+- Tried using SwiftUI for developing [the app](https://github.com/faizmokhtar/LottieTest) at first but it seems like the Lottie support is not good enough yet? Very bad stutterings.
 - There was some crash cause by assertion check on `lottie-ios` library. I had to fork the library and remove it myself. 
 The assertion should probably be replace with warnings instead
 
